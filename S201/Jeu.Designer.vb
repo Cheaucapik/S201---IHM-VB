@@ -29,12 +29,12 @@ Partial Class Jeu
         Me.Temps_Lab = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer = New System.Windows.Forms.Label()
-        Me.Carte_Lab = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SuspendLayout()
         '
         'Abandonner_btn
         '
-        Me.Abandonner_btn.Location = New System.Drawing.Point(491, 13)
+        Me.Abandonner_btn.Location = New System.Drawing.Point(429, 13)
         Me.Abandonner_btn.Name = "Abandonner_btn"
         Me.Abandonner_btn.Size = New System.Drawing.Size(75, 23)
         Me.Abandonner_btn.TabIndex = 0
@@ -62,7 +62,7 @@ Partial Class Jeu
         'Temps_Lab
         '
         Me.Temps_Lab.AutoSize = True
-        Me.Temps_Lab.Location = New System.Drawing.Point(242, 18)
+        Me.Temps_Lab.Location = New System.Drawing.Point(214, 18)
         Me.Temps_Lab.Name = "Temps_Lab"
         Me.Temps_Lab.Size = New System.Drawing.Size(83, 13)
         Me.Temps_Lab.TabIndex = 3
@@ -75,27 +75,28 @@ Partial Class Jeu
         'Timer
         '
         Me.Timer.AutoSize = True
-        Me.Timer.Location = New System.Drawing.Point(331, 18)
+        Me.Timer.Location = New System.Drawing.Point(303, 18)
         Me.Timer.Name = "Timer"
         Me.Timer.Size = New System.Drawing.Size(39, 13)
         Me.Timer.TabIndex = 4
         Me.Timer.Text = "Temps"
         '
-        'Carte_Lab
+        'Panel1
         '
-        Me.Carte_Lab.AutoSize = True
-        Me.Carte_Lab.Location = New System.Drawing.Point(23, 64)
-        Me.Carte_Lab.Name = "Carte_Lab"
-        Me.Carte_Lab.Size = New System.Drawing.Size(32, 13)
-        Me.Carte_Lab.TabIndex = 5
-        Me.Carte_Lab.Text = "Carte"
+        Me.Panel1.AutoSize = True
+        Me.Panel1.Location = New System.Drawing.Point(26, 59)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(299, 77)
+        Me.Panel1.TabIndex = 7
         '
         'Jeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(584, 450)
-        Me.Controls.Add(Me.Carte_Lab)
+        Me.AutoScroll = True
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(529, 189)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Timer)
         Me.Controls.Add(Me.Temps_Lab)
         Me.Controls.Add(Me.Nom_Lab)
@@ -114,5 +115,5 @@ Partial Class Jeu
     Friend WithEvents Temps_Lab As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer As Label
-    Friend WithEvents Carte_Lab As Label
+    Friend WithEvents Panel1 As Panel
 End Class

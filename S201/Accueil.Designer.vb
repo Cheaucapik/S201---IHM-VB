@@ -26,6 +26,7 @@ Partial Class Accueil
         Me.Jouer_btn = New System.Windows.Forms.Button()
         Me.Score_btn = New System.Windows.Forms.Button()
         Me.Quitter_btn = New System.Windows.Forms.Button()
+        Me.Param_btn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ComboBox1
@@ -47,7 +48,7 @@ Partial Class Accueil
         '
         'Score_btn
         '
-        Me.Score_btn.Location = New System.Drawing.Point(109, 170)
+        Me.Score_btn.Location = New System.Drawing.Point(155, 170)
         Me.Score_btn.Name = "Score_btn"
         Me.Score_btn.Size = New System.Drawing.Size(75, 23)
         Me.Score_btn.TabIndex = 2
@@ -56,18 +57,28 @@ Partial Class Accueil
         '
         'Quitter_btn
         '
-        Me.Quitter_btn.Location = New System.Drawing.Point(211, 170)
+        Me.Quitter_btn.Location = New System.Drawing.Point(260, 170)
         Me.Quitter_btn.Name = "Quitter_btn"
         Me.Quitter_btn.Size = New System.Drawing.Size(75, 23)
         Me.Quitter_btn.TabIndex = 3
         Me.Quitter_btn.Text = "Quitter"
         Me.Quitter_btn.UseVisualStyleBackColor = True
         '
+        'Param_btn
+        '
+        Me.Param_btn.Location = New System.Drawing.Point(54, 170)
+        Me.Param_btn.Name = "Param_btn"
+        Me.Param_btn.Size = New System.Drawing.Size(75, 23)
+        Me.Param_btn.TabIndex = 4
+        Me.Param_btn.Text = "Paramètres"
+        Me.Param_btn.UseVisualStyleBackColor = True
+        '
         'Accueil
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(390, 258)
+        Me.Controls.Add(Me.Param_btn)
         Me.Controls.Add(Me.Quitter_btn)
         Me.Controls.Add(Me.Score_btn)
         Me.Controls.Add(Me.Jouer_btn)
@@ -82,4 +93,5 @@ Partial Class Accueil
     Friend WithEvents Jouer_btn As Button
     Friend WithEvents Score_btn As Button
     Friend WithEvents Quitter_btn As Button
+    Friend WithEvents Param_btn As Button
 End Class

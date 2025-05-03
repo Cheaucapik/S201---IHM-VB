@@ -22,7 +22,12 @@
     End Sub
 
     Private Sub Score_btn_Click(sender As Object, e As EventArgs) Handles Score_btn.Click
-        Dim Socre As New Score()
+        Dim Score As New Score()
         Score.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Param_btn.Click
+        Dim Param As New Paramètres()
+        Param.Show()
     End Sub
 End Class

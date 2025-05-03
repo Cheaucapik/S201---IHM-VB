@@ -81,6 +81,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Enregistrement.vb" />
+    <Compile Include="Cartes.vb" />
+    <Compile Include="Paramètres.Designer.vb">
+      <DependentUpon>Paramètres.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Paramètres.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Score.Designer.vb">
       <DependentUpon>Score.vb</DependentUpon>
     </Compile>
@@ -122,6 +129,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Paramètres.resx">
+      <DependentUpon>Paramètres.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Score.resx">
       <DependentUpon>Score.vb</DependentUpon>
     </EmbeddedResource>
@@ -138,9 +148,15 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="img\dos-bleu.png" />
+    <Content Include="Resources\cantel.png" />
+    <Content Include="Resources\fessy.png" />
+    <Content Include="Resources\paviot.png" />
+    <Content Include="Resources\poitrenaud.png" />
+    <Content Include="Resources\rossit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dos-bleu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -1,12 +1,17 @@
 ﻿Imports System.Reflection.Emit
 
 Public Class Jeu
-    Dim temps_restant As Integer = 60
+    Public temps_restant As Integer = 60
+
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.FormBorderStyle = FormBorderStyle.Sizable
+        Me.MinimumSize = New Size(400, 300)
+
         Timer1.Start()
         Timer.Text = temps_restant.ToString()
-        Carte_Lab.Image = Image.FromFile("img\dos-bleu.png")
         Nom_Lab.Text = Accueil.ComboBox1.Text
+        Cartes.ajout(20, Panel1)
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
