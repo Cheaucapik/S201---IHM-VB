@@ -18,6 +18,8 @@ Public Class Jeu
         If temps_restant > 0 Then
             temps_restant -= 1
             Timer.Text = temps_restant.ToString()
+        Else
+            MsgBox("Votre temps est écoulé vous avez fait un score de : ", )
         End If
     End Sub
 
