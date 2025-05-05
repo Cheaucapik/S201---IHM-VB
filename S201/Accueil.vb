@@ -14,7 +14,7 @@
 
     Private Sub Jouer_btn_Click(sender As Object, e As EventArgs) Handles Jouer_btn.Click
         If longueur = True Then
-            Dim Jeu As New Jeu()
+            Dim Jeu As New Memory()
             Jeu.Show()
         Else
             MsgBox("Veuillez sélectionner un élément avec au moins 3 caractères.")

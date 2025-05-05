@@ -7,9 +7,10 @@
         Public Temps As Double
     End Structure
 
-    Dim TJOUE As Joueur()
+    Dim listJoueur As New List(Of Joueur)
 
     Sub Ajout()
+        listJoueur.Add(New Joueur With {.Nom = Accueil.ComboBox1.Text, .Score = Jeu.score, Record = , NbPartie = , Temps = })
 
     End Sub
 

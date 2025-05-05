@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Jeu
+Partial Class Memory
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -30,6 +30,7 @@ Partial Class Jeu
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.SuspendLayout()
         '
         'Abandonner_btn
@@ -89,6 +90,12 @@ Partial Class Jeu
         Me.Panel1.Size = New System.Drawing.Size(299, 77)
         Me.Panel1.TabIndex = 7
         '
+        'ImageList1
+        '
+        Me.ImageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
+        Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        '
         'Jeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -103,7 +110,7 @@ Partial Class Jeu
         Me.Controls.Add(Me.Joueur_lab)
         Me.Controls.Add(Me.Abandonner_btn)
         Me.Name = "Jeu"
-        Me.Text = "Form2"
+        Me.Text = "Jeu"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -116,4 +123,5 @@ Partial Class Jeu
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents ImageList1 As ImageList
 End Class
