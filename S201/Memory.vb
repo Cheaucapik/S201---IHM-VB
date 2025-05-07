@@ -11,7 +11,6 @@ Public Class Memory
         temps_restant = temps_initial
         Jeu.score = 0
 
-
         Timer1.Start()
         Timer.Text = temps_restant.ToString()
         Nom_Lab.Text = Accueil.ComboBox1.Text

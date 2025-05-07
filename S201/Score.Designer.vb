@@ -27,7 +27,6 @@ Partial Class Score
         Me.Temps_lb = New System.Windows.Forms.ListBox()
         Me.NbPartie_lb = New System.Windows.Forms.ListBox()
         Me.TempsCumul_lb = New System.Windows.Forms.ListBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,12 +38,13 @@ Partial Class Score
         Me.OrderNom_btn = New System.Windows.Forms.Button()
         Me.OrderNbPartie_btn = New System.Windows.Forms.Button()
         Me.OrderTempsTotal_btn = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Nom_lb
         '
         Me.Nom_lb.FormattingEnabled = True
-        Me.Nom_lb.Location = New System.Drawing.Point(26, 84)
+        Me.Nom_lb.Location = New System.Drawing.Point(26, 110)
         Me.Nom_lb.Name = "Nom_lb"
         Me.Nom_lb.Size = New System.Drawing.Size(140, 251)
         Me.Nom_lb.TabIndex = 0
@@ -52,7 +52,7 @@ Partial Class Score
         'BestScore_lb
         '
         Me.BestScore_lb.FormattingEnabled = True
-        Me.BestScore_lb.Location = New System.Drawing.Point(201, 84)
+        Me.BestScore_lb.Location = New System.Drawing.Point(201, 110)
         Me.BestScore_lb.Name = "BestScore_lb"
         Me.BestScore_lb.Size = New System.Drawing.Size(140, 251)
         Me.BestScore_lb.TabIndex = 1
@@ -60,7 +60,7 @@ Partial Class Score
         'Temps_lb
         '
         Me.Temps_lb.FormattingEnabled = True
-        Me.Temps_lb.Location = New System.Drawing.Point(378, 84)
+        Me.Temps_lb.Location = New System.Drawing.Point(378, 110)
         Me.Temps_lb.Name = "Temps_lb"
         Me.Temps_lb.Size = New System.Drawing.Size(140, 251)
         Me.Temps_lb.TabIndex = 2
@@ -68,7 +68,7 @@ Partial Class Score
         'NbPartie_lb
         '
         Me.NbPartie_lb.FormattingEnabled = True
-        Me.NbPartie_lb.Location = New System.Drawing.Point(567, 84)
+        Me.NbPartie_lb.Location = New System.Drawing.Point(567, 110)
         Me.NbPartie_lb.Name = "NbPartie_lb"
         Me.NbPartie_lb.Size = New System.Drawing.Size(140, 251)
         Me.NbPartie_lb.TabIndex = 3
@@ -76,23 +76,15 @@ Partial Class Score
         'TempsCumul_lb
         '
         Me.TempsCumul_lb.FormattingEnabled = True
-        Me.TempsCumul_lb.Location = New System.Drawing.Point(750, 84)
+        Me.TempsCumul_lb.Location = New System.Drawing.Point(750, 110)
         Me.TempsCumul_lb.Name = "TempsCumul_lb"
         Me.TempsCumul_lb.Size = New System.Drawing.Size(140, 251)
         Me.TempsCumul_lb.TabIndex = 4
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(26, 341)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(140, 21)
-        Me.ComboBox1.TabIndex = 5
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(23, 60)
+        Me.Label1.Location = New System.Drawing.Point(23, 86)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(29, 13)
         Me.Label1.TabIndex = 6
@@ -101,7 +93,7 @@ Partial Class Score
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(198, 60)
+        Me.Label2.Location = New System.Drawing.Point(198, 86)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(35, 13)
         Me.Label2.TabIndex = 7
@@ -110,7 +102,7 @@ Partial Class Score
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(375, 60)
+        Me.Label3.Location = New System.Drawing.Point(375, 86)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(39, 13)
         Me.Label3.TabIndex = 8
@@ -119,7 +111,7 @@ Partial Class Score
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(564, 60)
+        Me.Label4.Location = New System.Drawing.Point(564, 86)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(39, 13)
         Me.Label4.TabIndex = 9
@@ -128,7 +120,7 @@ Partial Class Score
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(747, 60)
+        Me.Label5.Location = New System.Drawing.Point(747, 86)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(66, 13)
         Me.Label5.TabIndex = 10
@@ -145,7 +137,7 @@ Partial Class Score
         '
         'OrderScore_btn
         '
-        Me.OrderScore_btn.Location = New System.Drawing.Point(266, 55)
+        Me.OrderScore_btn.Location = New System.Drawing.Point(266, 81)
         Me.OrderScore_btn.Name = "OrderScore_btn"
         Me.OrderScore_btn.Size = New System.Drawing.Size(75, 23)
         Me.OrderScore_btn.TabIndex = 12
@@ -154,7 +146,7 @@ Partial Class Score
         '
         'OrderTemps_btn
         '
-        Me.OrderTemps_btn.Location = New System.Drawing.Point(443, 55)
+        Me.OrderTemps_btn.Location = New System.Drawing.Point(443, 81)
         Me.OrderTemps_btn.Name = "OrderTemps_btn"
         Me.OrderTemps_btn.Size = New System.Drawing.Size(75, 23)
         Me.OrderTemps_btn.TabIndex = 13
@@ -163,7 +155,7 @@ Partial Class Score
         '
         'OrderNom_btn
         '
-        Me.OrderNom_btn.Location = New System.Drawing.Point(91, 55)
+        Me.OrderNom_btn.Location = New System.Drawing.Point(91, 81)
         Me.OrderNom_btn.Name = "OrderNom_btn"
         Me.OrderNom_btn.Size = New System.Drawing.Size(75, 23)
         Me.OrderNom_btn.TabIndex = 14
@@ -172,7 +164,7 @@ Partial Class Score
         '
         'OrderNbPartie_btn
         '
-        Me.OrderNbPartie_btn.Location = New System.Drawing.Point(632, 55)
+        Me.OrderNbPartie_btn.Location = New System.Drawing.Point(632, 81)
         Me.OrderNbPartie_btn.Name = "OrderNbPartie_btn"
         Me.OrderNbPartie_btn.Size = New System.Drawing.Size(75, 23)
         Me.OrderNbPartie_btn.TabIndex = 15
@@ -181,18 +173,27 @@ Partial Class Score
         '
         'OrderTempsTotal_btn
         '
-        Me.OrderTempsTotal_btn.Location = New System.Drawing.Point(815, 55)
+        Me.OrderTempsTotal_btn.Location = New System.Drawing.Point(815, 81)
         Me.OrderTempsTotal_btn.Name = "OrderTempsTotal_btn"
         Me.OrderTempsTotal_btn.Size = New System.Drawing.Size(75, 23)
         Me.OrderTempsTotal_btn.TabIndex = 16
         Me.OrderTempsTotal_btn.Text = "Croissant"
         Me.OrderTempsTotal_btn.UseVisualStyleBackColor = True
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(26, 54)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(140, 21)
+        Me.ComboBox1.TabIndex = 17
+        '
         'Score
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(908, 450)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.OrderTempsTotal_btn)
         Me.Controls.Add(Me.OrderNbPartie_btn)
         Me.Controls.Add(Me.OrderNom_btn)
@@ -204,7 +205,6 @@ Partial Class Score
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.TempsCumul_lb)
         Me.Controls.Add(Me.NbPartie_lb)
         Me.Controls.Add(Me.Temps_lb)
@@ -222,7 +222,6 @@ Partial Class Score
     Friend WithEvents Temps_lb As ListBox
     Friend WithEvents NbPartie_lb As ListBox
     Friend WithEvents TempsCumul_lb As ListBox
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -234,4 +233,5 @@ Partial Class Score
     Friend WithEvents OrderNom_btn As Button
     Friend WithEvents OrderNbPartie_btn As Button
     Friend WithEvents OrderTempsTotal_btn As Button
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

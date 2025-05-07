@@ -1,4 +1,6 @@
-﻿Module Enregistrement
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Module Enregistrement
 
     Public listNom As New List(Of String)
     Public Structure Joueur
@@ -52,6 +54,12 @@
 
         For j As Integer = 0 To TJOUEUR.Length - 1
             listNom.Add(TJOUEUR(j).Nom)
+        Next
+
+        Accueil.ComboBox1.Text = ""
+        Accueil.ComboBox1.Items.Clear()
+        For j As Integer = 0 To TJOUEUR.Length - 1
+            Accueil.ComboBox1.Items.Add(TJOUEUR(j).Nom)
         Next
 
     End Sub

@@ -33,6 +33,11 @@
     Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
         afficher()
+        ComboBox1.Text = ""
+        ComboBox1.Items.Clear()
+        For j As Integer = 0 To TJOUEUR.Length - 1
+            ComboBox1.Items.Add(TJOUEUR(j).Nom)
+        Next
     End Sub
 
     Private Sub Nom_lb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Nom_lb.SelectedIndexChanged, Temps_lb.SelectedIndexChanged, BestScore_lb.SelectedIndexChanged, TempsCumul_lb.SelectedIndexChanged, NbPartie_lb.SelectedIndexChanged
@@ -107,5 +112,16 @@
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ThenBy(Function(j) j.Temps).ToArray()
         End If
         afficher()
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Dim index As Integer = ComboBox1.SelectedIndex
+        MsgBox("Statistiques" & vbCrLf & vbCrLf &
+               "Nom : " & Enregistrement.TJOUEUR(index).Nom & vbCrLf &
+               "Meilleur Score : " & Enregistrement.TJOUEUR(index).Score & vbCrLf &
+               "Temps record : " & Enregistrement.TJOUEUR(index).RecordTemps & vbCrLf &
+               "Nombre de parties : " & Enregistrement.TJOUEUR(index).NbPartie & vbCrLf &
+               "Temps joué : " & Enregistrement.TJOUEUR(index).Temps)
+
     End Sub
 End Class
