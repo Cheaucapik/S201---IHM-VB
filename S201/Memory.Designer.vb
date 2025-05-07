@@ -31,6 +31,7 @@ Partial Class Memory
         Me.Timer = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Abandonner_btn
@@ -96,20 +97,30 @@ Partial Class Memory
         Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         '
-        'Jeu
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(348, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(60, 48)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Memory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(529, 189)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Timer)
         Me.Controls.Add(Me.Temps_Lab)
         Me.Controls.Add(Me.Nom_Lab)
         Me.Controls.Add(Me.Joueur_lab)
         Me.Controls.Add(Me.Abandonner_btn)
-        Me.Name = "Jeu"
+        Me.Name = "Memory"
         Me.Text = "Jeu"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -124,4 +135,5 @@ Partial Class Memory
     Friend WithEvents Timer As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents Button1 As Button
 End Class

@@ -59,7 +59,11 @@
 
     Private Sub click(sender As Object, e As EventArgs)
         Dim pb As PictureBox = CType(sender, PictureBox)
+
+        If cartesRetournées.Contains(pb) Then Exit Sub
+
         Dim index As Integer = CInt(pb.Tag) ' l'index est égal au tag d'une picture box, donc on sait quelle picture box est retournée
+
 
         If clickPoss = True Then
             pb.Image = cartesShuffled(index).cartes ' pour la picture box 1 on va avoir l'image associée
@@ -88,7 +92,7 @@
         If identiques = True Then
             clickPoss = True
         End If
-        If identiques = True And cartesRetournées.Count = 4 Then
+        If identiques = True AndAlso cartesRetournées.Count = 4 Then
             For Each pb In cartesRetournées
                 pb.Image = Nothing
                 pb.Enabled = False

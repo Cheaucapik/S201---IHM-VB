@@ -8,9 +8,9 @@ Public Class Memory
     Public temps_initial As Integer = 60
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        temps_restant = temps_initial 'nb magique
+        temps_restant = temps_initial
         Jeu.score = 0
-        Me.FormBorderStyle = FormBorderStyle.Sizable
+
 
         Timer1.Start()
         Timer.Text = temps_restant.ToString()
@@ -37,5 +37,9 @@ Public Class Memory
             Timer1.Stop()
             Me.Close()
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        temps_restant = 0
     End Sub
 End Class

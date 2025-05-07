@@ -24,8 +24,9 @@
         Dim s As Integer = Jeu.score
         Dim r As Integer = temps_écoulé
         Dim np As Integer = 1
-        Dim t As Integer = Memory.temps_initial
+        Dim t As Integer = temps_écoulé
         Dim i As Integer = Verification(n)
+
         If (i >= 0) Then
             With TJOUEUR(i)
                 .NbPartie += 1
@@ -44,11 +45,14 @@
             Exit Sub
         End If
 
-
         ReDim Preserve TJOUEUR(TJOUEUR.Length)
         TJOUEUR(TJOUEUR.Length - 1) = New Joueur(n, s, r, np, t)
 
-        listNom.Add(n)
+        listNom.Clear()
+
+        For j As Integer = 0 To TJOUEUR.Length - 1
+            listNom.Add(TJOUEUR(j).Nom)
+        Next
 
     End Sub
     Function Verification(n As String)
