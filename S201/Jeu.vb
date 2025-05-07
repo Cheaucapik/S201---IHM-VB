@@ -1,5 +1,4 @@
 ﻿Module Jeu
-
     Structure CartesInfo
         Dim cartes As Image
         Dim id As Integer
