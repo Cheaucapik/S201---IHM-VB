@@ -39,6 +39,7 @@
             destination.Controls.Add(pb)
 
             AddHandler pb.Click, AddressOf click
+            AddHandler pb.MouseEnter, AddressOf curseur
         Next i
 
     End Sub
@@ -46,13 +47,32 @@
     Public Sub cartes_ajout(nbcartes As Integer)
         listCartes.Clear()
         cartesShuffled.Clear()
-        For i As Integer = 0 To carré - 1
-            listCartes.Add(New CartesInfo With {.cartes = My.Resources.rossit, .id = 1})
-            listCartes.Add(New CartesInfo With {.cartes = My.Resources.poitrenaud, .id = 2})
-            listCartes.Add(New CartesInfo With {.cartes = My.Resources.cantel, .id = 3})
-            listCartes.Add(New CartesInfo With {.cartes = My.Resources.fessy, .id = 4})
-            listCartes.Add(New CartesInfo With {.cartes = My.Resources.paviot, .id = 5})
-        Next
+
+        If nbcartes = 20 Then
+            For i As Integer = 0 To carré - 1
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.rossit, .id = 1})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.poitrenaud, .id = 2})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.cantel, .id = 3})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.fessy, .id = 4})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.paviot, .id = 5})
+            Next
+        ElseIf nbcartes = 12 Then
+            For i As Integer = 0 To carré - 1
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.rossit, .id = 1})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.poitrenaud, .id = 2})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.cantel, .id = 3})
+            Next
+        Else
+            For i As Integer = 0 To carré - 1
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.rossit, .id = 1})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.poitrenaud, .id = 2})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.cantel, .id = 3})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.fessy, .id = 4})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.paviot, .id = 5})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.mesatfa, .id = 6})
+                listCartes.Add(New CartesInfo With {.cartes = My.Resources.darche, .id = 7})
+            Next
+        End If
 
         Dim rnd As New Random()
         cartesShuffled = listCartes.OrderBy(Function(x) rnd.Next()).ToList() ' on mélange la liste pour que ce soit aléatoire
@@ -138,4 +158,9 @@
         Next
         cartesRetournées.Clear()
     End Sub
+
+    Sub curseur(sender As Object, e As EventArgs)
+        sender.cursor = Cursors.Hand
+    End Sub
+
 End Module

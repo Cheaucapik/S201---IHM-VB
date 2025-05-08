@@ -30,10 +30,9 @@ Partial Class Memory
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.pause_pb = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Panel1.SuspendLayout()
         CType(Me.pause_pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -95,11 +94,19 @@ Partial Class Memory
         'Panel1
         '
         Me.Panel1.AutoSize = True
-        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Location = New System.Drawing.Point(26, 59)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(478, 329)
         Me.Panel1.TabIndex = 7
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(140, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(32, 36)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Button"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ImageList1
         '
@@ -115,15 +122,6 @@ Partial Class Memory
         Me.pause_pb.TabIndex = 8
         Me.pause_pb.TabStop = False
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(0, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(71, 36)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Button"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Memory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -131,6 +129,7 @@ Partial Class Memory
         Me.AutoScroll = True
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(529, 417)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.pause_pb)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Timer)
@@ -138,9 +137,9 @@ Partial Class Memory
         Me.Controls.Add(Me.Nom_Lab)
         Me.Controls.Add(Me.Joueur_lab)
         Me.Controls.Add(Me.Abandonner_btn)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Memory"
         Me.Text = "Jeu"
-        Me.Panel1.ResumeLayout(False)
         CType(Me.pause_pb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

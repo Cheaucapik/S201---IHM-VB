@@ -2,28 +2,36 @@
 
 Public Class Memory
     Dim temps_restant As Integer
-    Dim nbCarrés As Integer = 20
-    Dim nCarré As Integer = nbCarrés / 4
+    Dim nbCarrés As Integer
+    Dim nCarré As Integer
     Dim temps_écoulé As Integer
-    Public temps_initial As Integer = 60
+    Public temps_initial As Integer = Settings.temps
     Dim pause As Boolean = False
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Settings.difficulté = 2 Then
+            nbCarrés = 20
+        ElseIf Settings.difficulté = 1 Then
+            nbCarrés = 28
+        Else
+            nbCarrés = 12
+        End If
+
+        nCarré = nbCarrés / 4
+
         temps_restant = temps_initial
         Jeu.score = 0
 
         Timer1.Start()
         Timer.Text = temps_restant.ToString() + "s"
         Nom_Lab.Text = Accueil.ComboBox1.Text
-        Jeu.ajout(20, Panel1)
+        Jeu.ajout(nbCarrés, Panel1)
 
         Abandonner_btn.BackColor = Color.FromArgb(255, 99, 71)
         Abandonner_btn.ForeColor = Color.White
 
         pause_pb.Image = My.Resources.pause
         pause_pb.SizeMode = PictureBoxSizeMode.StretchImage
-
-
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -60,7 +68,7 @@ Public Class Memory
             Timer1.Stop()
             pause = True
             pause_pb.Image = My.Resources.play
-            Jeu.pause()
+            Jeu.pause() 'retourne les cartes quand on met pause
         Else
             pause = False
             Timer1.Start()
@@ -69,4 +77,9 @@ Public Class Memory
         End If
 
     End Sub
+
+    Private Sub Abandonner_btn_MouseEnter(sender As Object, e As EventArgs) Handles Abandonner_btn.MouseEnter, pause_pb.MouseEnter
+        sender.cursor = Cursors.Hand
+    End Sub
+
 End Class

@@ -42,11 +42,18 @@
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Param_pb.Click
-        Dim Param As New Paramètres()
+        Dim Param As New Parametres()
         Param.Show()
     End Sub
 
     Private Sub pseudo_lb_Click(sender As Object, e As EventArgs) Handles pseudo_lb.Click
         ComboBox1.Focus()
+    End Sub
+
+    Private Sub Param_lb_MouseEnter(sender As Object, e As EventArgs) Handles Param_pb.MouseEnter, Quitter_btn.MouseEnter, Jouer_btn.MouseEnter, Score_btn.MouseEnter
+        sender.cursor = Cursors.Hand
+    End Sub
+    Private Sub ComboBox1_MouseEnter(sender As Object, e As EventArgs) Handles pseudo_lb.MouseEnter
+        sender.cursor = Cursors.IBeam
     End Sub
 End Class

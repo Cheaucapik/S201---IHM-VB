@@ -193,6 +193,7 @@ Partial Class Score
         Me.Controls.Add(Me.Temps_lb)
         Me.Controls.Add(Me.BestScore_lb)
         Me.Controls.Add(Me.Nom_lb)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Score"
         Me.Text = "Tableau des scores"
         Me.ResumeLayout(False)

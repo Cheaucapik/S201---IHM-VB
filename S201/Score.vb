@@ -147,4 +147,18 @@
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
         Me.Close()
     End Sub
+
+    Private Sub OrderNom_btn_MouseEnter(sender As Object, e As EventArgs) Handles OrderNom_btn.MouseEnter, OrderNbPartie_btn.MouseEnter, OrderScore_btn.MouseEnter, OrderTempsRecord_btn.MouseEnter, OrderTempsTotal_btn.MouseEnter, Retour_btn.MouseEnter
+        sender.cursor = Cursors.Hand
+    End Sub
+
+    Private Sub Nom_lb_MouseMove(sender As Object, e As MouseEventArgs) Handles Nom_lb.MouseMove
+        Dim index As Integer = Nom_lb.IndexFromPoint(e.Location)
+
+        If index >= 0 Then
+            Nom_lb.Cursor = Cursors.Hand
+        Else
+            Nom_lb.Cursor = Cursors.Default
+        End If
+    End Sub
 End Class
