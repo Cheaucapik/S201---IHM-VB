@@ -6,28 +6,40 @@ Public Class Memory
     Dim nCarré As Integer = nbCarrés / 4
     Dim temps_écoulé As Integer
     Public temps_initial As Integer = 60
+    Dim pause As Boolean = False
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         temps_restant = temps_initial
         Jeu.score = 0
 
         Timer1.Start()
-        Timer.Text = temps_restant.ToString()
+        Timer.Text = temps_restant.ToString() + "s"
         Nom_Lab.Text = Accueil.ComboBox1.Text
         Jeu.ajout(20, Panel1)
+
+        Abandonner_btn.BackColor = Color.FromArgb(255, 99, 71)
+        Abandonner_btn.ForeColor = Color.White
+
+        pause_pb.Image = My.Resources.pause
+        pause_pb.SizeMode = PictureBoxSizeMode.StretchImage
+
 
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        temps_restant -= 1
+        If temps_restant <= 10 Then
+            Timer.ForeColor = Color.Red
+        End If
         If temps_restant = 0 Or Jeu.score = nCarré Then
             Timer1.Stop()
+            RemoveHandler Timer1.Tick, AddressOf Timer1_Tick
             temps_écoulé = temps_initial - temps_restant
             finPartie(Jeu.score, temps_écoulé)
             Me.Close()
             Enregistrement.Ajout(temps_écoulé)
         End If
-        temps_restant -= 1
-        Timer.Text = temps_restant.ToString()
+        Timer.Text = temps_restant.ToString() + "s"
     End Sub
 
     Private Sub Abandonner_btn_Click(sender As Object, e As EventArgs) Handles Abandonner_btn.Click
@@ -39,6 +51,22 @@ Public Class Memory
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        temps_restant = 0
+        temps_restant = 1
+    End Sub
+
+    Private Sub pause_pb_Click(sender As Object, e As EventArgs) Handles pause_pb.Click
+        If pause = False Then
+            Panel1.Enabled = False
+            Timer1.Stop()
+            pause = True
+            pause_pb.Image = My.Resources.play
+            Jeu.pause()
+        Else
+            pause = False
+            Timer1.Start()
+            Panel1.Enabled = True
+            pause_pb.Image = My.Resources.pause
+        End If
+
     End Sub
 End Class

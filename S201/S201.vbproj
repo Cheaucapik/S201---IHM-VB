@@ -152,7 +152,9 @@
     <Content Include="Resources\cantel.png" />
     <Content Include="Resources\fessy.png" />
     <Content Include="Resources\ordre.png" />
+    <Content Include="Resources\pause.png" />
     <Content Include="Resources\paviot.png" />
+    <Content Include="Resources\play.png" />
     <Content Include="Resources\poitrenaud.png" />
     <Content Include="Resources\rossit.png" />
     <Content Include="Resources\settings.png" />

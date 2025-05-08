@@ -9,6 +9,7 @@
     Dim carré As Integer = 4
     Dim cartesRetournées As New List(Of PictureBox)
     Dim attenteTimer As New Timer With {.Interval = 1000}
+    Dim trouveTimer As New Timer With {.Interval = 300}
     Dim clickPoss As Boolean = True
     Public score As Integer = 0
 
@@ -93,17 +94,14 @@
             clickPoss = True
         End If
         If identiques = True AndAlso cartesRetournées.Count = 4 Then
-            For Each pb In cartesRetournées
-                pb.Image = Nothing
-                pb.Enabled = False
-            Next
-            clickPoss = True
-            cartesRetournées.Clear()
-            score += 1
+            AddHandler trouveTimer.Tick, AddressOf time2
+            trouveTimer.Start()
+            Memory.Panel1.Enabled = False
+            clickPoss = False
         End If
     End Sub
 
-    Private Sub time()
+    Private Sub time(sender As Object, e As EventArgs)
         For Each pb In cartesRetournées
             pb.Image = My.Resources.dos_bleu
             pb.Enabled = True
@@ -111,12 +109,33 @@
 
         cartesRetournées.Clear()
         attenteTimer.Stop()
+        RemoveHandler attenteTimer.Tick, AddressOf time
 
         clickPoss = True
+    End Sub
+
+    Private Sub time2(sender As Object, e As EventArgs)
+        For Each pb In cartesRetournées
+            pb.Image = Nothing
+            pb.Enabled = False
+        Next
+        trouveTimer.Stop()
+        RemoveHandler trouveTimer.Tick, AddressOf time2
+        Memory.Panel1.Enabled = True
+        clickPoss = True
+        cartesRetournées.Clear()
+        score += 1
     End Sub
 
     Sub finPartie(s As Integer, t As Integer)
         MsgBox("Score : " & s & ". Temps : " & t & " secondes")
     End Sub
 
+    Sub pause()
+        For Each pb In cartesRetournées
+            pb.Image = My.Resources.dos_bleu
+            pb.Enabled = True
+        Next
+        cartesRetournées.Clear()
+    End Sub
 End Module

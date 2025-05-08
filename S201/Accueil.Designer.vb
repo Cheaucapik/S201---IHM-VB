@@ -26,9 +26,9 @@ Partial Class Accueil
         Me.Jouer_btn = New System.Windows.Forms.Button()
         Me.Score_btn = New System.Windows.Forms.Button()
         Me.Quitter_btn = New System.Windows.Forms.Button()
-        Me.Param_pb = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pseudo_lb = New System.Windows.Forms.Label()
+        Me.Param_pb = New System.Windows.Forms.PictureBox()
         CType(Me.Param_pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -74,14 +74,6 @@ Partial Class Accueil
         Me.Quitter_btn.Text = "Quitter"
         Me.Quitter_btn.UseVisualStyleBackColor = True
         '
-        'Param_pb
-        '
-        Me.Param_pb.Location = New System.Drawing.Point(21, 19)
-        Me.Param_pb.Name = "Param_pb"
-        Me.Param_pb.Size = New System.Drawing.Size(30, 30)
-        Me.Param_pb.TabIndex = 4
-        Me.Param_pb.TabStop = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -102,6 +94,14 @@ Partial Class Accueil
         Me.pseudo_lb.Size = New System.Drawing.Size(46, 15)
         Me.pseudo_lb.TabIndex = 6
         Me.pseudo_lb.Text = "Pseudo"
+        '
+        'Param_pb
+        '
+        Me.Param_pb.Location = New System.Drawing.Point(21, 19)
+        Me.Param_pb.Name = "Param_pb"
+        Me.Param_pb.Size = New System.Drawing.Size(30, 30)
+        Me.Param_pb.TabIndex = 4
+        Me.Param_pb.TabStop = False
         '
         'Accueil
         '

@@ -34,6 +34,7 @@ Partial Class Score
         Me.OrderTempsRecord_btn = New System.Windows.Forms.Button()
         Me.OrderNbPartie_btn = New System.Windows.Forms.Button()
         Me.OrderTempsTotal_btn = New System.Windows.Forms.Button()
+        Me.Retour_btn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Nom_lb
@@ -42,7 +43,7 @@ Partial Class Score
         Me.Nom_lb.FormattingEnabled = True
         Me.Nom_lb.Location = New System.Drawing.Point(26, 141)
         Me.Nom_lb.Name = "Nom_lb"
-        Me.Nom_lb.Size = New System.Drawing.Size(140, 247)
+        Me.Nom_lb.Size = New System.Drawing.Size(140, 182)
         Me.Nom_lb.TabIndex = 0
         '
         'BestScore_lb
@@ -52,7 +53,7 @@ Partial Class Score
         Me.BestScore_lb.FormattingEnabled = True
         Me.BestScore_lb.Location = New System.Drawing.Point(172, 141)
         Me.BestScore_lb.Name = "BestScore_lb"
-        Me.BestScore_lb.Size = New System.Drawing.Size(140, 247)
+        Me.BestScore_lb.Size = New System.Drawing.Size(140, 182)
         Me.BestScore_lb.TabIndex = 1
         '
         'Temps_lb
@@ -61,7 +62,7 @@ Partial Class Score
         Me.Temps_lb.FormattingEnabled = True
         Me.Temps_lb.Location = New System.Drawing.Point(318, 141)
         Me.Temps_lb.Name = "Temps_lb"
-        Me.Temps_lb.Size = New System.Drawing.Size(140, 247)
+        Me.Temps_lb.Size = New System.Drawing.Size(140, 182)
         Me.Temps_lb.TabIndex = 2
         '
         'NbPartie_lb
@@ -70,7 +71,7 @@ Partial Class Score
         Me.NbPartie_lb.FormattingEnabled = True
         Me.NbPartie_lb.Location = New System.Drawing.Point(464, 141)
         Me.NbPartie_lb.Name = "NbPartie_lb"
-        Me.NbPartie_lb.Size = New System.Drawing.Size(140, 247)
+        Me.NbPartie_lb.Size = New System.Drawing.Size(140, 182)
         Me.NbPartie_lb.TabIndex = 3
         '
         'TempsCumul_lb
@@ -79,7 +80,7 @@ Partial Class Score
         Me.TempsCumul_lb.FormattingEnabled = True
         Me.TempsCumul_lb.Location = New System.Drawing.Point(610, 141)
         Me.TempsCumul_lb.Name = "TempsCumul_lb"
-        Me.TempsCumul_lb.Size = New System.Drawing.Size(140, 247)
+        Me.TempsCumul_lb.Size = New System.Drawing.Size(140, 182)
         Me.TempsCumul_lb.TabIndex = 4
         '
         'OrderNom_btn
@@ -109,7 +110,7 @@ Partial Class Score
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(19, 24)
+        Me.Label6.Location = New System.Drawing.Point(249, 20)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(296, 37)
         Me.Label6.TabIndex = 18
@@ -163,11 +164,23 @@ Partial Class Score
         Me.OrderTempsTotal_btn.Text = "Temps total"
         Me.OrderTempsTotal_btn.UseVisualStyleBackColor = False
         '
+        'Retour_btn
+        '
+        Me.Retour_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Retour_btn.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Retour_btn.Location = New System.Drawing.Point(675, 341)
+        Me.Retour_btn.Name = "Retour_btn"
+        Me.Retour_btn.Size = New System.Drawing.Size(75, 31)
+        Me.Retour_btn.TabIndex = 23
+        Me.Retour_btn.Text = "Retour"
+        Me.Retour_btn.UseVisualStyleBackColor = True
+        '
         'Score
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(771, 450)
+        Me.ClientSize = New System.Drawing.Size(771, 384)
+        Me.Controls.Add(Me.Retour_btn)
         Me.Controls.Add(Me.OrderTempsTotal_btn)
         Me.Controls.Add(Me.OrderNbPartie_btn)
         Me.Controls.Add(Me.OrderTempsRecord_btn)
@@ -199,4 +212,5 @@ Partial Class Score
     Friend WithEvents OrderTempsRecord_btn As Button
     Friend WithEvents OrderNbPartie_btn As Button
     Friend WithEvents OrderTempsTotal_btn As Button
+    Friend WithEvents Retour_btn As Button
 End Class

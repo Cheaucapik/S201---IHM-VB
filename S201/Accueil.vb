@@ -22,7 +22,7 @@
             Dim Jeu As New Memory()
             Jeu.Show()
         Else
-            MsgBox("Veuillez sélectionner un élément avec au moins 3 caractères.")
+            MsgBox("Le pseudo doit contenir au moins 3 caractères.")
         End If
     End Sub
 
@@ -44,5 +44,9 @@
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Param_pb.Click
         Dim Param As New Paramètres()
         Param.Show()
+    End Sub
+
+    Private Sub pseudo_lb_Click(sender As Object, e As EventArgs) Handles pseudo_lb.Click
+        ComboBox1.Focus()
     End Sub
 End Class

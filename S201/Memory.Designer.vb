@@ -31,14 +31,19 @@ Partial Class Memory
         Me.Timer = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.pause_pb = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel1.SuspendLayout()
+        CType(Me.pause_pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Abandonner_btn
         '
-        Me.Abandonner_btn.Location = New System.Drawing.Point(429, 13)
+        Me.Abandonner_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Abandonner_btn.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Abandonner_btn.Location = New System.Drawing.Point(398, 9)
         Me.Abandonner_btn.Name = "Abandonner_btn"
-        Me.Abandonner_btn.Size = New System.Drawing.Size(75, 23)
+        Me.Abandonner_btn.Size = New System.Drawing.Size(106, 37)
         Me.Abandonner_btn.TabIndex = 0
         Me.Abandonner_btn.Text = "Abandonner"
         Me.Abandonner_btn.UseVisualStyleBackColor = True
@@ -46,27 +51,30 @@ Partial Class Memory
         'Joueur_lab
         '
         Me.Joueur_lab.AutoSize = True
+        Me.Joueur_lab.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Joueur_lab.Location = New System.Drawing.Point(23, 18)
         Me.Joueur_lab.Name = "Joueur_lab"
-        Me.Joueur_lab.Size = New System.Drawing.Size(45, 13)
+        Me.Joueur_lab.Size = New System.Drawing.Size(58, 17)
         Me.Joueur_lab.TabIndex = 1
         Me.Joueur_lab.Text = "Joueur :"
         '
         'Nom_Lab
         '
         Me.Nom_Lab.AutoSize = True
-        Me.Nom_Lab.Location = New System.Drawing.Point(84, 18)
+        Me.Nom_Lab.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Nom_Lab.Location = New System.Drawing.Point(87, 18)
         Me.Nom_Lab.Name = "Nom_Lab"
-        Me.Nom_Lab.Size = New System.Drawing.Size(39, 13)
+        Me.Nom_Lab.Size = New System.Drawing.Size(47, 17)
         Me.Nom_Lab.TabIndex = 2
         Me.Nom_Lab.Text = "Joueur"
         '
         'Temps_Lab
         '
         Me.Temps_Lab.AutoSize = True
-        Me.Temps_Lab.Location = New System.Drawing.Point(214, 18)
+        Me.Temps_Lab.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Temps_Lab.Location = New System.Drawing.Point(174, 19)
         Me.Temps_Lab.Name = "Temps_Lab"
-        Me.Temps_Lab.Size = New System.Drawing.Size(83, 13)
+        Me.Temps_Lab.Size = New System.Drawing.Size(107, 17)
         Me.Temps_Lab.TabIndex = 3
         Me.Temps_Lab.Text = "Temps restant : "
         '
@@ -77,18 +85,20 @@ Partial Class Memory
         'Timer
         '
         Me.Timer.AutoSize = True
-        Me.Timer.Location = New System.Drawing.Point(303, 18)
+        Me.Timer.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Timer.Location = New System.Drawing.Point(287, 19)
         Me.Timer.Name = "Timer"
-        Me.Timer.Size = New System.Drawing.Size(39, 13)
+        Me.Timer.Size = New System.Drawing.Size(46, 17)
         Me.Timer.TabIndex = 4
         Me.Timer.Text = "Temps"
         '
         'Panel1
         '
         Me.Panel1.AutoSize = True
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Location = New System.Drawing.Point(26, 59)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(299, 77)
+        Me.Panel1.Size = New System.Drawing.Size(478, 329)
         Me.Panel1.TabIndex = 7
         '
         'ImageList1
@@ -97,13 +107,21 @@ Partial Class Memory
         Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         '
+        'pause_pb
+        '
+        Me.pause_pb.Location = New System.Drawing.Point(348, 19)
+        Me.pause_pb.Name = "pause_pb"
+        Me.pause_pb.Size = New System.Drawing.Size(20, 20)
+        Me.pause_pb.TabIndex = 8
+        Me.pause_pb.TabStop = False
+        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(348, 12)
+        Me.Button1.Location = New System.Drawing.Point(0, 0)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(60, 48)
+        Me.Button1.Size = New System.Drawing.Size(71, 36)
         Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Button"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Memory
@@ -112,8 +130,8 @@ Partial Class Memory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(529, 189)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(529, 417)
+        Me.Controls.Add(Me.pause_pb)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Timer)
         Me.Controls.Add(Me.Temps_Lab)
@@ -122,6 +140,8 @@ Partial Class Memory
         Me.Controls.Add(Me.Abandonner_btn)
         Me.Name = "Memory"
         Me.Text = "Jeu"
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.pause_pb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -135,5 +155,6 @@ Partial Class Memory
     Friend WithEvents Timer As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents pause_pb As PictureBox
     Friend WithEvents Button1 As Button
 End Class

@@ -63,6 +63,9 @@
 
         OrderTempsTotal_btn.BackColor = Color.FromArgb(51, 154, 255)
         OrderTempsTotal_btn.ForeColor = Color.White
+
+        Retour_btn.BackColor = Color.FromArgb(255, 99, 71)
+        Retour_btn.ForeColor = Color.White
     End Sub
 
     Private Sub Nom_lb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Nom_lb.SelectedIndexChanged, Temps_lb.SelectedIndexChanged, BestScore_lb.SelectedIndexChanged, TempsCumul_lb.SelectedIndexChanged, NbPartie_lb.SelectedIndexChanged
@@ -141,4 +144,7 @@
         End If
     End Sub
 
+    Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
+        Me.Close()
+    End Sub
 End Class
