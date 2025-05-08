@@ -32,7 +32,6 @@ Partial Class Score
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Save_btn = New System.Windows.Forms.Button()
         Me.OrderScore_btn = New System.Windows.Forms.Button()
         Me.OrderTemps_btn = New System.Windows.Forms.Button()
         Me.OrderNom_btn = New System.Windows.Forms.Button()
@@ -126,15 +125,6 @@ Partial Class Score
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Temps Total"
         '
-        'Save_btn
-        '
-        Me.Save_btn.Location = New System.Drawing.Point(796, 390)
-        Me.Save_btn.Name = "Save_btn"
-        Me.Save_btn.Size = New System.Drawing.Size(94, 23)
-        Me.Save_btn.TabIndex = 11
-        Me.Save_btn.Text = "Sauvegarder"
-        Me.Save_btn.UseVisualStyleBackColor = True
-        '
         'OrderScore_btn
         '
         Me.OrderScore_btn.Location = New System.Drawing.Point(266, 81)
@@ -199,7 +189,6 @@ Partial Class Score
         Me.Controls.Add(Me.OrderNom_btn)
         Me.Controls.Add(Me.OrderTemps_btn)
         Me.Controls.Add(Me.OrderScore_btn)
-        Me.Controls.Add(Me.Save_btn)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -227,7 +216,6 @@ Partial Class Score
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Save_btn As Button
     Friend WithEvents OrderScore_btn As Button
     Friend WithEvents OrderTemps_btn As Button
     Friend WithEvents OrderNom_btn As Button

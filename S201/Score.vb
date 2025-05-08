@@ -30,6 +30,16 @@
             TempsCumul_lb.Items.Add(temps)
         Next
     End Sub
+
+    Private Sub comboBox()
+        Dim index As Integer = ComboBox1.SelectedIndex
+        MsgBox("Statistiques" & vbCrLf & vbCrLf &
+               "Nom : " & Enregistrement.TJOUEUR(index).Nom & vbCrLf &
+               "Meilleur Score : " & Enregistrement.TJOUEUR(index).Score & vbCrLf &
+               "Temps record : " & Enregistrement.TJOUEUR(index).RecordTemps & vbCrLf &
+               "Nombre de parties : " & Enregistrement.TJOUEUR(index).NbPartie & vbCrLf &
+               "Temps joué : " & Enregistrement.TJOUEUR(index).Temps)
+    End Sub
     Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
         afficher()
@@ -46,7 +56,7 @@
         TempsCumul_lb.SelectedIndex = position
         NbPartie_lb.SelectedIndex = position
         Temps_lb.SelectedIndex = position
-
+        ComboBox1.Text = Nom_lb.Items(position)
     End Sub
 
     Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs) Handles OrderScore_btn.Click
@@ -115,13 +125,14 @@
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        Dim index As Integer = ComboBox1.SelectedIndex
-        MsgBox("Statistiques" & vbCrLf & vbCrLf &
-               "Nom : " & Enregistrement.TJOUEUR(index).Nom & vbCrLf &
-               "Meilleur Score : " & Enregistrement.TJOUEUR(index).Score & vbCrLf &
-               "Temps record : " & Enregistrement.TJOUEUR(index).RecordTemps & vbCrLf &
-               "Nombre de parties : " & Enregistrement.TJOUEUR(index).NbPartie & vbCrLf &
-               "Temps joué : " & Enregistrement.TJOUEUR(index).Temps)
+        If ComboBox1.DroppedDown = True Then
+            comboBox()
+        End If
+    End Sub
 
+    Private Sub ComboBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ComboBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            comboBox()
+        End If
     End Sub
 End Class
