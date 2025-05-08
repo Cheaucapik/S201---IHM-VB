@@ -89,11 +89,11 @@ Partial Class Parametres
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(96, 9)
+        Me.Label1.Location = New System.Drawing.Point(71, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(191, 37)
+        Me.Label1.Size = New System.Drawing.Size(236, 37)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "PARAMETRES"
+        Me.Label1.Text = "⚙️ PARAMETRES"
         '
         'Temps_lb
         '

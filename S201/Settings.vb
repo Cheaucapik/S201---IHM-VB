@@ -39,6 +39,7 @@ Module Settings
             temps = CInt(f.Temps_tb.Text)
         Else
             MsgBox("Veuillez saisir un temps supérieur à 30 secondes.")
+            Exit Sub
         End If
 
         If f.CheckBox1.Checked Then

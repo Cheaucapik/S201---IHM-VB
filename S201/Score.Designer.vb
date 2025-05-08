@@ -35,6 +35,7 @@ Partial Class Score
         Me.OrderNbPartie_btn = New System.Windows.Forms.Button()
         Me.OrderTempsTotal_btn = New System.Windows.Forms.Button()
         Me.Retour_btn = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Nom_lb
@@ -101,20 +102,20 @@ Partial Class Score
         Me.ComboBox1.BackColor = System.Drawing.SystemColors.Window
         Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(26, 85)
+        Me.ComboBox1.Location = New System.Drawing.Point(26, 83)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(140, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(102, 21)
         Me.ComboBox1.TabIndex = 17
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(249, 20)
+        Me.Label6.Location = New System.Drawing.Point(218, 19)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(296, 37)
+        Me.Label6.Size = New System.Drawing.Size(341, 37)
         Me.Label6.TabIndex = 18
-        Me.Label6.Text = "TABLEAU DES SCORES"
+        Me.Label6.Text = "🏆 TABLEAU DES SCORES"
         '
         'OrderScore_btn
         '
@@ -175,11 +176,25 @@ Partial Class Score
         Me.Retour_btn.Text = "Retour"
         Me.Retour_btn.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.LightGreen
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(134, 78)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(32, 28)
+        Me.Button1.TabIndex = 24
+        Me.Button1.Text = "✅"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'Score
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(771, 384)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Retour_btn)
         Me.Controls.Add(Me.OrderTempsTotal_btn)
         Me.Controls.Add(Me.OrderNbPartie_btn)
@@ -214,4 +229,5 @@ Partial Class Score
     Friend WithEvents OrderNbPartie_btn As Button
     Friend WithEvents OrderTempsTotal_btn As Button
     Friend WithEvents Retour_btn As Button
+    Friend WithEvents Button1 As Button
 End Class

@@ -5,10 +5,10 @@
     Dim nbPartie As Integer
     Dim temps As Integer
     Dim ordreScore As Boolean = True
-    Dim ordreTempsRecord As Boolean = True
+    Dim ordreTempsRecord As Boolean = False
     Dim ordreNom As Boolean = True
     Dim ordrePartie As Boolean = True
-    Dim ordreTempsTotal As Boolean = True
+    Dim ordreTempsTotal As Boolean = False
 
     Private Sub afficher()
         Nom_lb.Items.Clear()
@@ -29,16 +29,6 @@
             temps = Enregistrement.TJOUEUR(i).Temps
             TempsCumul_lb.Items.Add(temps)
         Next
-    End Sub
-
-    Private Sub comboBox()
-        Dim index As Integer = ComboBox1.SelectedIndex
-        MsgBox("Statistiques" & vbCrLf & vbCrLf &
-               "Nom : " & Enregistrement.TJOUEUR(index).Nom & vbCrLf &
-               "Meilleur Score : " & Enregistrement.TJOUEUR(index).Score & vbCrLf &
-               "Temps record : " & Enregistrement.TJOUEUR(index).RecordTemps & vbCrLf &
-               "Nombre de parties : " & Enregistrement.TJOUEUR(index).NbPartie & vbCrLf &
-               "Temps joué : " & Enregistrement.TJOUEUR(index).Temps)
     End Sub
     Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
@@ -77,7 +67,7 @@
         ComboBox1.Text = Nom_lb.Items(position)
     End Sub
 
-    Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs)
+    Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs) Handles OrderScore_btn.Click
         If ordreScore = True Then
             ordreScore = False
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
@@ -88,13 +78,13 @@
         afficher()
     End Sub
 
-    Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs)
+    Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsRecord_btn.Click
         If ordreTempsRecord = True Then
             ordreTempsRecord = False
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.RecordTemps).ThenBy(Function(j) j.RecordTemps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.RecordTemps).ToArray()
         Else
             ordreTempsRecord = True
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.RecordTemps).ThenBy(Function(j) j.RecordTemps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.RecordTemps).ToArray()
         End If
         afficher()
     End Sub
@@ -102,47 +92,37 @@
     Private Sub OrderNom_btn_Click(sender As Object, e As EventArgs) Handles OrderNom_btn.Click
         If ordreNom = True Then
             ordreNom = False
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Nom).ThenBy(Function(j) j.RecordTemps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Nom).ToArray()
         Else
             ordreNom = True
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Nom).ThenBy(Function(j) j.RecordTemps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Nom).ToArray()
         End If
         afficher()
     End Sub
 
-    Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs)
+    Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs) Handles OrderNbPartie_btn.Click
         If ordrePartie = True Then
             ordrePartie = False
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.NbPartie).ThenBy(Function(j) j.RecordTemps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.NbPartie).ToArray()
         Else
             ordrePartie = True
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ThenBy(Function(j) j.RecordTemps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ToArray()
         End If
         afficher()
     End Sub
 
-    Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs)
+    Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsTotal_btn.Click
         If ordreTempsTotal = True Then
             ordreTempsTotal = False
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.NbPartie).ThenBy(Function(j) j.Temps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Temps).ToArray()
         Else
             ordreTempsTotal = True
-            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ThenBy(Function(j) j.Temps).ToArray()
+            Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Temps).ToArray()
         End If
         afficher()
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        If ComboBox1.DroppedDown = True Then
-            comboBox()
-        End If
-    End Sub
 
-    Private Sub ComboBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ComboBox1.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            comboBox()
-        End If
-    End Sub
 
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
         Me.Close()
@@ -160,5 +140,18 @@
         Else
             Nom_lb.Cursor = Cursors.Default
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim index As Integer = ComboBox1.SelectedIndex
+        If index >= 0 Then
+            MsgBox("📊 Statistiques" & vbCrLf & vbCrLf &
+               "👤 Nom : " & Enregistrement.TJOUEUR(index).Nom & vbCrLf &
+               "🏆 Meilleur Score : " & Enregistrement.TJOUEUR(index).Score & vbCrLf &
+               "⏱️ Temps record : " & Enregistrement.TJOUEUR(index).RecordTemps & vbCrLf &
+               "🎮 Nombre de parties : " & Enregistrement.TJOUEUR(index).NbPartie & vbCrLf &
+               "🕒 Temps joué : " & Enregistrement.TJOUEUR(index).Temps)
+        End If
+
     End Sub
 End Class
