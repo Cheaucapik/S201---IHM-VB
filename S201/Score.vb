@@ -48,6 +48,21 @@
         For j As Integer = 0 To TJOUEUR.Length - 1
             ComboBox1.Items.Add(TJOUEUR(j).Nom)
         Next
+
+        OrderNom_btn.BackColor = Color.FromArgb(51, 154, 255)
+        OrderNom_btn.ForeColor = Color.White
+
+        OrderScore_btn.BackColor = Color.FromArgb(51, 154, 255)
+        OrderScore_btn.ForeColor = Color.White
+
+        OrderTempsRecord_btn.BackColor = Color.FromArgb(51, 154, 255)
+        OrderTempsRecord_btn.ForeColor = Color.White
+
+        OrderNbPartie_btn.BackColor = Color.FromArgb(51, 154, 255)
+        OrderNbPartie_btn.ForeColor = Color.White
+
+        OrderTempsTotal_btn.BackColor = Color.FromArgb(51, 154, 255)
+        OrderTempsTotal_btn.ForeColor = Color.White
     End Sub
 
     Private Sub Nom_lb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Nom_lb.SelectedIndexChanged, Temps_lb.SelectedIndexChanged, BestScore_lb.SelectedIndexChanged, TempsCumul_lb.SelectedIndexChanged, NbPartie_lb.SelectedIndexChanged
@@ -59,27 +74,23 @@
         ComboBox1.Text = Nom_lb.Items(position)
     End Sub
 
-    Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs) Handles OrderScore_btn.Click
+    Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs)
         If ordreScore = True Then
             ordreScore = False
-            OrderScore_btn.Text = "Décroissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
         Else
             ordreScore = True
-            OrderScore_btn.Text = "Croissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
         End If
         afficher()
     End Sub
 
-    Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs) Handles OrderTemps_btn.Click
+    Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs)
         If ordreTempsRecord = True Then
             ordreTempsRecord = False
-            OrderTemps_btn.Text = "Décroissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.RecordTemps).ThenBy(Function(j) j.RecordTemps).ToArray()
         Else
             ordreTempsRecord = True
-            OrderTemps_btn.Text = "Croissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.RecordTemps).ThenBy(Function(j) j.RecordTemps).ToArray()
         End If
         afficher()
@@ -88,37 +99,31 @@
     Private Sub OrderNom_btn_Click(sender As Object, e As EventArgs) Handles OrderNom_btn.Click
         If ordreNom = True Then
             ordreNom = False
-            OrderNom_btn.Text = "Décroissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Nom).ThenBy(Function(j) j.RecordTemps).ToArray()
         Else
             ordreNom = True
-            OrderNom_btn.Text = "Croissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Nom).ThenBy(Function(j) j.RecordTemps).ToArray()
         End If
         afficher()
     End Sub
 
-    Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs) Handles OrderNbPartie_btn.Click
+    Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs)
         If ordrePartie = True Then
             ordrePartie = False
-            OrderNbPartie_btn.Text = "Décroissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.NbPartie).ThenBy(Function(j) j.RecordTemps).ToArray()
         Else
             ordrePartie = True
-            OrderNbPartie_btn.Text = "Croissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ThenBy(Function(j) j.RecordTemps).ToArray()
         End If
         afficher()
     End Sub
 
-    Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsTotal_btn.Click
+    Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs)
         If ordreTempsTotal = True Then
             ordreTempsTotal = False
-            OrderTempsTotal_btn.Text = "Décroissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.NbPartie).ThenBy(Function(j) j.Temps).ToArray()
         Else
             ordreTempsTotal = True
-            OrderTempsTotal_btn.Text = "Croissant"
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ThenBy(Function(j) j.Temps).ToArray()
         End If
         afficher()
@@ -135,4 +140,5 @@
             comboBox()
         End If
     End Sub
+
 End Class

@@ -10,6 +10,11 @@
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
         longueur = ComboBox1.Text.Length >= 3
+        If ComboBox1.Text <> "" Then
+            pseudo_lb.Visible = False
+        Else
+            pseudo_lb.Visible = True
+        End If
     End Sub
 
     Private Sub Jouer_btn_Click(sender As Object, e As EventArgs) Handles Jouer_btn.Click
@@ -26,9 +31,18 @@
         Score.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Param_btn.Click
+    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Param_pb.BackgroundImage = My.Resources.settings
+
+        Jouer_btn.BackColor = Color.FromArgb(51, 154, 255)
+        Jouer_btn.ForeColor = Color.White
+
+        Quitter_btn.BackColor = Color.FromArgb(255, 99, 71)
+        Quitter_btn.ForeColor = Color.White
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Param_pb.Click
         Dim Param As New Paramètres()
         Param.Show()
     End Sub
-
 End Class
