@@ -166,7 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\cantel.png" />
+    <Content Include="Resources\click.wav" />
     <Content Include="Resources\darche.png" />
+    <Content Include="Resources\done.wav" />
+    <Content Include="Resources\failure.wav" />
     <Content Include="Resources\fessy.png" />
     <Content Include="Resources\mesatfa.png" />
     <Content Include="Resources\ordre.png" />
@@ -175,7 +178,9 @@
     <Content Include="Resources\play.png" />
     <Content Include="Resources\poitrenaud.png" />
     <Content Include="Resources\rossit.png" />
+    <Content Include="Resources\see-you.wav" />
     <Content Include="Resources\settings.png" />
+    <Content Include="Resources\successful.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dos-bleu.png" />
@@ -191,6 +196,25 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

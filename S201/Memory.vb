@@ -1,4 +1,4 @@
-﻿Imports System.Reflection.Emit
+﻿Imports System.Media
 
 Public Class Memory
     Dim temps_restant As Integer
@@ -7,6 +7,9 @@ Public Class Memory
     Dim temps_écoulé As Integer
     Public temps_initial As Integer = Settings.temps
     Dim pause As Boolean = False
+    Dim succes As New SoundPlayer(My.Resources.successful)
+    Dim clic As New SoundPlayer(My.Resources.click)
+    Dim fail As New SoundPlayer(My.Resources.failure)
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Settings.difficulté = 2 Then
@@ -43,6 +46,12 @@ Public Class Memory
             Timer1.Stop()
             RemoveHandler Timer1.Tick, AddressOf Timer1_Tick
             temps_écoulé = temps_initial - temps_restant
+            If Jeu.score <> nCarré AndAlso Settings.son Then
+                fail.Play()
+            End If
+            If Jeu.score = nCarré AndAlso Settings.son Then
+                succes.Play()
+            End If
             finPartie(Jeu.score, temps_écoulé)
             Me.Close()
             Enregistrement.Ajout(temps_écoulé)
@@ -51,6 +60,9 @@ Public Class Memory
     End Sub
 
     Private Sub Abandonner_btn_Click(sender As Object, e As EventArgs) Handles Abandonner_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         Dim choix = MsgBox("Êtes-vous sûr de vouloir arrêter le jeu ?", vbYesNo + vbDefaultButton2)
         If choix = vbYes Then
             Timer1.Stop()
@@ -63,6 +75,9 @@ Public Class Memory
     End Sub
 
     Private Sub pause_pb_Click(sender As Object, e As EventArgs) Handles pause_pb.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         If pause = False Then
             Panel1.Enabled = False
             Timer1.Stop()
@@ -81,5 +96,6 @@ Public Class Memory
     Private Sub Abandonner_btn_MouseEnter(sender As Object, e As EventArgs) Handles Abandonner_btn.MouseEnter, pause_pb.MouseEnter
         sender.cursor = Cursors.Hand
     End Sub
+
 
 End Class

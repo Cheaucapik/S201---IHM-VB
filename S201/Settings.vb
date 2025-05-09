@@ -1,6 +1,11 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
+﻿Imports System.Media
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
+Imports AxWMPLib
+Imports S201.Enregistrement
 
 Module Settings
+    Dim save As New SoundPlayer(My.Resources.done)
+    Dim clic As New SoundPlayer(My.Resources.click)
 
     Public difficulté As Integer = 2
     Public temps As Integer = 60
@@ -25,6 +30,9 @@ Module Settings
     End Sub
 
     Sub sauvegarde(f As Parametres)
+        If Settings.son Then
+            save.Play()
+        End If
 
         Select Case True
             Case f.RadioButton1.Checked

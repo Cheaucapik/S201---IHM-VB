@@ -104,7 +104,7 @@ Partial Class Score
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(26, 83)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(102, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(114, 21)
         Me.ComboBox1.TabIndex = 17
         '
         'Label6
@@ -182,11 +182,11 @@ Partial Class Score
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(134, 78)
+        Me.Button1.Location = New System.Drawing.Point(146, 83)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(32, 28)
+        Me.Button1.Size = New System.Drawing.Size(20, 21)
         Me.Button1.TabIndex = 24
-        Me.Button1.Text = "✅"
+        Me.Button1.Text = "✔️"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Score

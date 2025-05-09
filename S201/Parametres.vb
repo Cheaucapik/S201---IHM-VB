@@ -1,4 +1,8 @@
-﻿Public Class Parametres
+﻿Imports System.Media
+Imports S201.Enregistrement
+
+Public Class Parametres
+    Dim clic As New SoundPlayer(My.Resources.click)
     Dim difficulté As String() = {"Facile", "Moyen", "Difficile"}
     Private Sub Paramètres_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For i As Integer = 0 To Difficulté_GB.Controls.Count - 1
@@ -23,5 +27,11 @@
 
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
         Me.Close()
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.Click, RadioButton2.Click, RadioButton3.Click, CheckBox1.Click, CheckBox2.Click, Retour_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
     End Sub
 End Class

@@ -16,7 +16,8 @@
     Public Sub ajout(nbcartes As Integer, destination As Control)
         Dim nbCol As Integer = 5
         Dim nbRow As Integer = nbcartes / nbCol
-        Dim marge As Integer = 5
+        Dim margeh As Integer = 10
+        Dim margel As Integer = 30
         Dim largeur As Integer = 91
         Dim hauteur As Integer = 130
 
@@ -31,8 +32,8 @@
 
             Dim nRow = i \ nbCol
             Dim nCol = i Mod nbCol
-            pb.Left = nCol * (pb.Width + marge)
-            pb.Top = nRow * (pb.Height + marge)
+            pb.Left = nCol * (pb.Width + margel)
+            pb.Top = nRow * (pb.Height + margeh)
 
             pb.Tag = i ' on associe une picture à un tag i donc cahque picture box est dans l'ordre
 

@@ -1,4 +1,6 @@
-﻿Public Class Score
+﻿Imports System.Media
+
+Public Class Score
     Dim nom As String
     Dim score As Integer
     Dim record As Integer
@@ -9,6 +11,7 @@
     Dim ordreNom As Boolean = True
     Dim ordrePartie As Boolean = True
     Dim ordreTempsTotal As Boolean = False
+    Dim clic As New SoundPlayer(My.Resources.click)
 
     Private Sub afficher()
         Nom_lb.Items.Clear()
@@ -60,14 +63,20 @@
 
     Private Sub Nom_lb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Nom_lb.SelectedIndexChanged, Temps_lb.SelectedIndexChanged, BestScore_lb.SelectedIndexChanged, TempsCumul_lb.SelectedIndexChanged, NbPartie_lb.SelectedIndexChanged
         Dim position As Integer = Nom_lb.SelectedIndex
-        BestScore_lb.SelectedIndex = position
-        TempsCumul_lb.SelectedIndex = position
-        NbPartie_lb.SelectedIndex = position
-        Temps_lb.SelectedIndex = position
-        ComboBox1.Text = Nom_lb.Items(position)
+        If position >= 0 Then
+            BestScore_lb.SelectedIndex = position
+            TempsCumul_lb.SelectedIndex = position
+            NbPartie_lb.SelectedIndex = position
+            Temps_lb.SelectedIndex = position
+            ComboBox1.Text = Nom_lb.Items(position)
+        End If
+
     End Sub
 
     Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs) Handles OrderScore_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         If ordreScore = True Then
             ordreScore = False
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
@@ -79,6 +88,9 @@
     End Sub
 
     Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsRecord_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         If ordreTempsRecord = True Then
             ordreTempsRecord = False
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.RecordTemps).ToArray()
@@ -90,6 +102,9 @@
     End Sub
 
     Private Sub OrderNom_btn_Click(sender As Object, e As EventArgs) Handles OrderNom_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         If ordreNom = True Then
             ordreNom = False
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Nom).ToArray()
@@ -101,6 +116,9 @@
     End Sub
 
     Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs) Handles OrderNbPartie_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         If ordrePartie = True Then
             ordrePartie = False
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.NbPartie).ToArray()
@@ -112,6 +130,9 @@
     End Sub
 
     Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsTotal_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         If ordreTempsTotal = True Then
             ordreTempsTotal = False
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderBy(Function(j) j.Temps).ToArray()
@@ -122,9 +143,10 @@
         afficher()
     End Sub
 
-
-
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         Me.Close()
     End Sub
 
@@ -143,6 +165,9 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         Dim index As Integer = ComboBox1.SelectedIndex
         If index >= 0 Then
             MsgBox("📊 Statistiques" & vbCrLf & vbCrLf &

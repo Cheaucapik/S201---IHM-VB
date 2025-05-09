@@ -1,9 +1,19 @@
-﻿Public Class Accueil
+﻿Imports System.Media
 
+Public Class Accueil
+    Dim clic As New SoundPlayer(My.Resources.click)
+    Dim seeYou As New SoundPlayer(My.Resources.see_you)
     Dim longueur As Boolean
+    Dim jouer As New SoundPlayer(My.Resources.done)
     Private Sub Quitter_btn_Click(sender As Object, e As EventArgs) Handles Quitter_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         Dim Choix = MsgBox("Êtes-vous sûr de vouloir quitter l'application ?", vbYesNo + vbDefaultButton2)
         If Choix = vbYes Then
+            If Settings.son Then
+                seeYou.PlaySync()
+            End If
             End
         End If
     End Sub
@@ -19,6 +29,9 @@
 
     Private Sub Jouer_btn_Click(sender As Object, e As EventArgs) Handles Jouer_btn.Click
         If longueur = True Then
+            If Settings.son Then
+                jouer.Play()
+            End If
             Dim Jeu As New Memory()
             Jeu.Show()
         Else
@@ -27,6 +40,9 @@
     End Sub
 
     Private Sub Score_btn_Click(sender As Object, e As EventArgs) Handles Score_btn.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         Dim Score As New Score()
         Score.Show()
     End Sub
@@ -42,6 +58,9 @@
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Param_pb.Click
+        If Settings.son Then
+            clic.Play()
+        End If
         Dim Param As New Parametres()
         Param.Show()
     End Sub
