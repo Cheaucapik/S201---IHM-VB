@@ -6,12 +6,13 @@ Public Class Memory
     Dim nCarré As Integer
     Dim temps_écoulé As Integer
     Public temps_initial As Integer = Settings.temps
-    Dim pause As Boolean = False
+    Public pause As Boolean = False
     Dim succes As New SoundPlayer(My.Resources.successful)
     Dim clic As New SoundPlayer(My.Resources.click)
     Dim fail As New SoundPlayer(My.Resources.failure)
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         If Settings.difficulté = 2 Then
             nbCarrés = 20
         ElseIf Settings.difficulté = 1 Then
@@ -33,8 +34,13 @@ Public Class Memory
         Abandonner_btn.BackColor = Color.FromArgb(255, 99, 71)
         Abandonner_btn.ForeColor = Color.White
 
-        pause_pb.Image = My.Resources.pause
-        pause_pb.SizeMode = PictureBoxSizeMode.StretchImage
+        If sombre Then
+            Settings.themeSombre(Me)
+            pause_pb.Image = My.Resources.pause_blanc
+        Else
+            Settings.themeClair(Me)
+            pause_pb.Image = My.Resources.pause
+        End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -82,13 +88,21 @@ Public Class Memory
             Panel1.Enabled = False
             Timer1.Stop()
             pause = True
-            pause_pb.Image = My.Resources.play
+            If sombre Then
+                pause_pb.Image = My.Resources.play_blanc
+            Else
+                pause_pb.Image = My.Resources.play
+            End If
             Jeu.pause() 'retourne les cartes quand on met pause
         Else
             pause = False
             Timer1.Start()
             Panel1.Enabled = True
-            pause_pb.Image = My.Resources.pause
+            If sombre Then
+                pause_pb.Image = My.Resources.pause_blanc
+            Else
+                pause_pb.Image = My.Resources.pause
+            End If
         End If
 
     End Sub

@@ -14,6 +14,11 @@ Public Class Score
     Dim clic As New SoundPlayer(My.Resources.click)
 
     Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If sombre Then
+            Settings.themeSombre(Me)
+        Else
+            Settings.themeClair(Me)
+        End If
         Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
         Enregistrement.afficher(Me)
         ComboBox1.Text = ""

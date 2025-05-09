@@ -34,7 +34,7 @@ Partial Class Accueil
         '
         'ComboBox1
         '
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(132, 95)
         Me.ComboBox1.Name = "ComboBox1"
@@ -54,8 +54,9 @@ Partial Class Accueil
         '
         'Score_btn
         '
-        Me.Score_btn.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Score_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Score_btn.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Score_btn.ForeColor = System.Drawing.Color.Black
         Me.Score_btn.Location = New System.Drawing.Point(131, 157)
         Me.Score_btn.Name = "Score_btn"
         Me.Score_btn.Size = New System.Drawing.Size(111, 29)
@@ -88,10 +89,10 @@ Partial Class Accueil
         '
         Me.pseudo_lb.AutoSize = True
         Me.pseudo_lb.BackColor = System.Drawing.Color.White
-        Me.pseudo_lb.Font = New System.Drawing.Font("Segoe UI Semilight", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.pseudo_lb.Location = New System.Drawing.Point(162, 97)
+        Me.pseudo_lb.Font = New System.Drawing.Font("Segoe UI Semilight", 8.0!)
+        Me.pseudo_lb.Location = New System.Drawing.Point(163, 98)
         Me.pseudo_lb.Name = "pseudo_lb"
-        Me.pseudo_lb.Size = New System.Drawing.Size(46, 15)
+        Me.pseudo_lb.Size = New System.Drawing.Size(41, 13)
         Me.pseudo_lb.TabIndex = 6
         Me.pseudo_lb.Text = "Pseudo"
         '

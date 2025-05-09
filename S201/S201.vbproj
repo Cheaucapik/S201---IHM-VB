@@ -173,12 +173,15 @@
     <Content Include="Resources\fessy.png" />
     <Content Include="Resources\mesatfa.png" />
     <Content Include="Resources\ordre.png" />
+    <Content Include="Resources\pause-blanc.png" />
     <Content Include="Resources\pause.png" />
     <Content Include="Resources\paviot.png" />
+    <Content Include="Resources\play-blanc.png" />
     <Content Include="Resources\play.png" />
     <Content Include="Resources\poitrenaud.png" />
     <Content Include="Resources\rossit.png" />
     <Content Include="Resources\see-you.wav" />
+    <Content Include="Resources\settings-blanc.png" />
     <Content Include="Resources\settings.png" />
     <Content Include="Resources\successful.wav" />
   </ItemGroup>

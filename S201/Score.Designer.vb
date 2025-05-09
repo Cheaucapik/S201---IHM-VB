@@ -100,7 +100,7 @@ Partial Class Score
         'ComboBox1
         '
         Me.ComboBox1.BackColor = System.Drawing.SystemColors.Window
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(26, 83)
         Me.ComboBox1.Name = "ComboBox1"

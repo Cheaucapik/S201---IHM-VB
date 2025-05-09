@@ -30,8 +30,8 @@ Partial Class Memory
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.pause_pb = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.pause_pb = New System.Windows.Forms.PictureBox()
         CType(Me.pause_pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -98,14 +98,6 @@ Partial Class Memory
         Me.Panel1.Size = New System.Drawing.Size(570, 329)
         Me.Panel1.TabIndex = 7
         '
-        'pause_pb
-        '
-        Me.pause_pb.Location = New System.Drawing.Point(521, 19)
-        Me.pause_pb.Name = "pause_pb"
-        Me.pause_pb.Size = New System.Drawing.Size(20, 20)
-        Me.pause_pb.TabIndex = 8
-        Me.pause_pb.TabStop = False
-        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(207, 13)
@@ -114,6 +106,15 @@ Partial Class Memory
         Me.Button1.TabIndex = 8
         Me.Button1.Text = "Button"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'pause_pb
+        '
+        Me.pause_pb.Location = New System.Drawing.Point(521, 19)
+        Me.pause_pb.Name = "pause_pb"
+        Me.pause_pb.Size = New System.Drawing.Size(20, 20)
+        Me.pause_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pause_pb.TabIndex = 8
+        Me.pause_pb.TabStop = False
         '
         'Memory
         '

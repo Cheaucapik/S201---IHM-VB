@@ -1,7 +1,4 @@
 ﻿Imports System.Media
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Button
-Imports AxWMPLib
-Imports S201.Enregistrement
 
 Module Settings
     Dim save As New SoundPlayer(My.Resources.done)
@@ -64,6 +61,55 @@ Module Settings
 
         MsgBox("Paramètres enregistrés.")
 
+    End Sub
+
+    Sub themeSombre(f As Form)
+        f.BackColor = Color.FromArgb(44, 47, 51)
+
+        For Each ctrl As Control In f.Controls
+            If TypeOf ctrl Is ListBox Then
+                ctrl.BackColor = Color.FromArgb(64, 68, 75)
+                ctrl.ForeColor = Color.White
+            ElseIf TypeOf ctrl Is Button Then
+                If ctrl.ForeColor = Color.Black Then
+                    ctrl.ForeColor = Color.FromArgb(244, 244, 244)
+                    ctrl.BackColor = Color.FromArgb(64, 68, 75)
+                End If
+            ElseIf TypeOf ctrl Is Label Or TypeOf ctrl Is CheckBox Or TypeOf ctrl Is GroupBox Then
+                ctrl.ForeColor = Color.White
+                If ctrl.BackColor = Color.White Then
+                    ctrl.BackColor = Color.FromArgb(64, 68, 75)
+                End If
+            ElseIf TypeOf ctrl Is ComboBox Or TypeOf ctrl Is TextBox Then
+                ctrl.BackColor = Color.FromArgb(64, 68, 75)
+                ctrl.ForeColor = Color.White
+            End If
+        Next
+
+    End Sub
+
+    Sub themeClair(f As Form)
+        f.BackColor = Color.FromArgb(245, 245, 245)
+
+        For Each ctrl As Control In f.Controls
+            If TypeOf ctrl Is ListBox Then
+                ctrl.BackColor = Color.White
+                ctrl.ForeColor = Color.Black
+            ElseIf TypeOf ctrl Is Button Then
+                If ctrl.ForeColor = Color.FromArgb(244, 244, 244) Then
+                    ctrl.ForeColor = Color.Black
+                    ctrl.BackColor = Color.White
+                End If
+            ElseIf TypeOf ctrl Is Label Or TypeOf ctrl Is CheckBox Or TypeOf ctrl Is GroupBox Then
+                ctrl.ForeColor = Color.Black
+                If ctrl.BackColor = Color.FromArgb(64, 68, 75) Then
+                    ctrl.BackColor = Color.White
+                End If
+            ElseIf TypeOf ctrl Is ComboBox Or TypeOf ctrl Is TextBox Then
+                ctrl.BackColor = Color.White
+                ctrl.ForeColor = Color.Black
+            End If
+        Next
     End Sub
 
 

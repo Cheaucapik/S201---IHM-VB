@@ -1,5 +1,4 @@
 ﻿Imports System.Media
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Module Enregistrement
     Dim nom As String

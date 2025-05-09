@@ -1,5 +1,4 @@
 ﻿Imports System.Media
-Imports S201.Enregistrement
 
 Public Class Parametres
     Dim clic As New SoundPlayer(My.Resources.click)
@@ -8,6 +7,12 @@ Public Class Parametres
         For i As Integer = 0 To Difficulté_GB.Controls.Count - 1
             Difficulté_GB.Controls(i).Text = difficulté(i)
         Next i
+
+        If sombre Then
+            Settings.themeSombre(Me)
+        Else
+            Settings.themeClair(Me)
+        End If
 
         Settings.charge(Me)
 
@@ -23,6 +28,33 @@ Public Class Parametres
 
     Private Sub save_btn_Click(sender As Object, e As EventArgs) Handles save_btn.Click
         Settings.sauvegarde(Me)
+        If Settings.sombre Then
+            For Each f In Application.OpenForms
+                Settings.themeSombre(f)
+                Accueil.Param_pb.Image = My.Resources.settings_blanc
+                If TypeOf f Is Memory Then
+                    Dim memoryForm As Memory = CType(f, Memory)
+                    If memoryForm.pause Then
+                        memoryForm.pause_pb.Image = My.Resources.play_blanc
+                    Else
+                        memoryForm.pause_pb.Image = My.Resources.pause_blanc
+                    End If
+                End If
+            Next
+        Else
+            For Each f In Application.OpenForms
+                Settings.themeClair(f)
+                Accueil.Param_pb.Image = My.Resources.settings
+                If TypeOf f Is Memory Then
+                    Dim memoryForm As Memory = CType(f, Memory)
+                    If memoryForm.pause Then
+                        memoryForm.pause_pb.Image = My.Resources.play
+                    Else
+                        memoryForm.pause_pb.Image = My.Resources.pause
+                    End If
+                End If
+            Next
+        End If
     End Sub
 
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
