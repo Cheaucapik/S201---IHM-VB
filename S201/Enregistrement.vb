@@ -1,6 +1,13 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Media
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Module Enregistrement
+    Dim nom As String
+    Dim score As Integer
+    Dim record As Integer
+    Dim nbPartie As Integer
+    Dim temps As Integer
+    Dim clic As New SoundPlayer(My.Resources.click)
 
     Public listNom As New List(Of String)
     Public Structure Joueur
@@ -20,6 +27,27 @@ Module Enregistrement
     End Structure
 
     Public TJOUEUR() As Joueur = {}
+
+    Sub afficher(f As Score)
+        f.Nom_lb.Items.Clear()
+        f.BestScore_lb.Items.Clear()
+        f.Temps_lb.Items.Clear()
+        f.NbPartie_lb.Items.Clear()
+        f.TempsCumul_lb.Items.Clear()
+
+        For i As Integer = 0 To Enregistrement.listNom.Count - 1
+            nom = Enregistrement.TJOUEUR(i).Nom
+            f.Nom_lb.Items.Add(nom)
+            score = Enregistrement.TJOUEUR(i).Score
+            f.BestScore_lb.Items.Add(score)
+            record = Enregistrement.TJOUEUR(i).RecordTemps
+            f.Temps_lb.Items.Add(record)
+            nbPartie = Enregistrement.TJOUEUR(i).NbPartie
+            f.NbPartie_lb.Items.Add(nbPartie)
+            temps = Enregistrement.TJOUEUR(i).Temps
+            f.TempsCumul_lb.Items.Add(temps)
+        Next
+    End Sub
 
     Sub Ajout(temps_écoulé As Integer)
         Dim n As String = Accueil.ComboBox1.Text

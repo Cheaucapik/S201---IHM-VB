@@ -13,29 +13,9 @@ Public Class Score
     Dim ordreTempsTotal As Boolean = False
     Dim clic As New SoundPlayer(My.Resources.click)
 
-    Private Sub afficher()
-        Nom_lb.Items.Clear()
-        BestScore_lb.Items.Clear()
-        Temps_lb.Items.Clear()
-        NbPartie_lb.Items.Clear()
-        TempsCumul_lb.Items.Clear()
-
-        For i As Integer = 0 To Enregistrement.listNom.Count - 1
-            nom = Enregistrement.TJOUEUR(i).Nom
-            Nom_lb.Items.Add(nom)
-            score = Enregistrement.TJOUEUR(i).Score
-            BestScore_lb.Items.Add(score)
-            record = Enregistrement.TJOUEUR(i).RecordTemps
-            Temps_lb.Items.Add(record)
-            nbPartie = Enregistrement.TJOUEUR(i).NbPartie
-            NbPartie_lb.Items.Add(nbPartie)
-            temps = Enregistrement.TJOUEUR(i).Temps
-            TempsCumul_lb.Items.Add(temps)
-        Next
-    End Sub
     Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
-        afficher()
+        Enregistrement.afficher(Me)
         ComboBox1.Text = ""
         ComboBox1.Items.Clear()
         For j As Integer = 0 To TJOUEUR.Length - 1
@@ -84,7 +64,7 @@ Public Class Score
             ordreScore = True
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
         End If
-        afficher()
+        Enregistrement.afficher(Me)
     End Sub
 
     Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsRecord_btn.Click
@@ -98,7 +78,7 @@ Public Class Score
             ordreTempsRecord = True
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.RecordTemps).ToArray()
         End If
-        afficher()
+        Enregistrement.afficher(Me)
     End Sub
 
     Private Sub OrderNom_btn_Click(sender As Object, e As EventArgs) Handles OrderNom_btn.Click
@@ -112,7 +92,7 @@ Public Class Score
             ordreNom = True
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Nom).ToArray()
         End If
-        afficher()
+        Enregistrement.afficher(Me)
     End Sub
 
     Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs) Handles OrderNbPartie_btn.Click
@@ -126,7 +106,7 @@ Public Class Score
             ordrePartie = True
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.NbPartie).ToArray()
         End If
-        afficher()
+        Enregistrement.afficher(Me)
     End Sub
 
     Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsTotal_btn.Click
@@ -140,7 +120,7 @@ Public Class Score
             ordreTempsTotal = True
             Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Temps).ToArray()
         End If
-        afficher()
+        Enregistrement.afficher(Me)
     End Sub
 
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
@@ -163,7 +143,6 @@ Public Class Score
             Nom_lb.Cursor = Cursors.Default
         End If
     End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Settings.son Then
             clic.Play()
@@ -177,6 +156,6 @@ Public Class Score
                "🎮 Nombre de parties : " & Enregistrement.TJOUEUR(index).NbPartie & vbCrLf &
                "🕒 Temps joué : " & Enregistrement.TJOUEUR(index).Temps)
         End If
-
     End Sub
+
 End Class
