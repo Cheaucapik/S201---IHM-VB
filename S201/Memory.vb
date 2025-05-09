@@ -111,5 +111,4 @@ Public Class Memory
         sender.cursor = Cursors.Hand
     End Sub
 
-
 End Class
