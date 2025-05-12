@@ -14,18 +14,20 @@ Public Class Score
     Dim clic As New SoundPlayer(My.Resources.click)
 
     Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If sombre Then
+        If sombre Then 'applique le thème sombre s'il est activé dans les paramètres
             Settings.themeSombre(Me)
         Else
             Settings.themeClair(Me)
         End If
-        Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray()
+        Enregistrement.TJOUEUR = Enregistrement.TJOUEUR.OrderByDescending(Function(j) j.Score).ThenBy(Function(j) j.RecordTemps).ToArray() 'range dans l'ordre le tableau TJOUEUR pour l'affichage par défaut
         Enregistrement.afficher(Me)
-        ComboBox1.Text = ""
-        ComboBox1.Items.Clear()
-        For j As Integer = 0 To TJOUEUR.Length - 1
+        ComboBox1.Text = "" 'Remet à vide la comboBox à chaque chargement du formulaire
+        ComboBox1.Items.Clear() 'clear la comboBox pour éviter tout doublon
+        For j As Integer = 0 To TJOUEUR.Length - 1 'Ajoute des items à la comboBox selon les joueurs enregistrés
             ComboBox1.Items.Add(TJOUEUR(j).Nom)
         Next
+
+        'Esthétisme des boutons
 
         OrderNom_btn.BackColor = Color.FromArgb(51, 154, 255)
         OrderNom_btn.ForeColor = Color.White
@@ -47,8 +49,8 @@ Public Class Score
     End Sub
 
     Private Sub Nom_lb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Nom_lb.SelectedIndexChanged, Temps_lb.SelectedIndexChanged, BestScore_lb.SelectedIndexChanged, TempsCumul_lb.SelectedIndexChanged, NbPartie_lb.SelectedIndexChanged
-        Dim position As Integer = Nom_lb.SelectedIndex
-        If position >= 0 Then
+        Dim position As Integer = Nom_lb.SelectedIndex 'défini l'index de nom comme l'index de toutes les listBox
+        If position >= 0 Then 'il faut que position soit supérieur ou égal à 0 pour éviter toutes les erreurs d'indexiation
             BestScore_lb.SelectedIndex = position
             TempsCumul_lb.SelectedIndex = position
             NbPartie_lb.SelectedIndex = position
@@ -57,6 +59,8 @@ Public Class Score
         End If
 
     End Sub
+
+    'Dans les prochains sub, on trie dans l'ordre croissant ou décroissant selon le bouton
 
     Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs) Handles OrderScore_btn.Click
         If Settings.son Then
@@ -152,7 +156,7 @@ Public Class Score
         If Settings.son Then
             clic.Play()
         End If
-        Dim index As Integer = ComboBox1.SelectedIndex
+        Dim index As Integer = ComboBox1.SelectedIndex 'Si on clique sur le bouton valider toutes les statistiques du joueurs correspondant sont affichées
         If index >= 0 Then
             MsgBox("📊 Statistiques" & vbCrLf & vbCrLf &
                "👤 Nom : " & Enregistrement.TJOUEUR(index).Nom & vbCrLf &

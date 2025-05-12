@@ -9,7 +9,7 @@ Module Settings
     Public son As Boolean = True
     Public sombre As Boolean = False
 
-    Sub charge(f As Parametres)
+    Sub charge(f As Parametres) 'On définit les paramètres de défaut à la charge du formulaire ou ceux définis dans sauvegarde si le formulaire est rechargé
         Select Case difficulté
             Case 1
                 f.RadioButton1.Checked = True
@@ -31,7 +31,7 @@ Module Settings
             save.Play()
         End If
 
-        Select Case True
+        Select Case True 'On attribue une difficulté selon le radioButton coché
             Case f.RadioButton1.Checked
                 difficulté = 1
             Case f.RadioButton2.Checked
@@ -41,19 +41,19 @@ Module Settings
         End Select
 
         If CInt(f.Temps_tb.Text) >= 30 Then
-            temps = CInt(f.Temps_tb.Text)
+            temps = CInt(f.Temps_tb.Text) 'On définit un temps supérieur au moins à 30 secondes pour éviter des temps de partie trop minimals
         Else
             MsgBox("Veuillez saisir un temps supérieur à 30 secondes.")
             Exit Sub
         End If
 
-        If f.CheckBox1.Checked Then
+        If f.CheckBox1.Checked Then 'Application du thème sombre ou non
             sombre = True
         Else
             sombre = False
         End If
 
-        If f.CheckBox2.Checked Then
+        If f.CheckBox2.Checked Then 'Sons on ou off
             son = True
         Else
             son = False

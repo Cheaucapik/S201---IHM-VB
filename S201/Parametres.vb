@@ -5,7 +5,7 @@ Public Class Parametres
     Dim difficulté As String() = {"Facile", "Moyen", "Difficile"}
     Private Sub Paramètres_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For i As Integer = 0 To Difficulté_GB.Controls.Count - 1
-            Difficulté_GB.Controls(i).Text = difficulté(i)
+            Difficulté_GB.Controls(i).Text = difficulté(i) 'Affichage pour chaque radioButton
         Next i
 
         If sombre Then
@@ -14,7 +14,7 @@ Public Class Parametres
             Settings.themeClair(Me)
         End If
 
-        Settings.charge(Me)
+        Settings.charge(Me) 'On charge les paramètres mis
 
         Retour_btn.BackColor = Color.FromArgb(255, 99, 71)
         Retour_btn.ForeColor = Color.White
@@ -26,8 +26,9 @@ Public Class Parametres
         sender.cursor = Cursors.Hand
     End Sub
 
-    Private Sub save_btn_Click(sender As Object, e As EventArgs) Handles save_btn.Click
+    Private Sub save_btn_Click(sender As Object, e As EventArgs) Handles save_btn.Click 'On sauvegarde les paramètres
         Settings.sauvegarde(Me)
+        'Le thème sombre est appliqué aux forms déjà ouverts
         If Settings.sombre Then
             For Each f In Application.OpenForms
                 Settings.themeSombre(f)

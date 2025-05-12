@@ -13,6 +13,8 @@ Public Class Memory
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'définit le nb de carrés selon la difficulté
+
         If Settings.difficulté = 2 Then
             nbCarrés = 20
         ElseIf Settings.difficulté = 1 Then
@@ -22,15 +24,19 @@ Public Class Memory
         End If
 
         nCarré = nbCarrés / 4
+        'On calcule le nombre de carrés à déterminer
 
+        'On initialise les variables pour débuter le jeu
         temps_restant = temps_initial
         Jeu.score = 0
 
+        'On lance le timer
         Timer1.Start()
         Timer.Text = temps_restant.ToString() + "s"
-        Nom_Lab.Text = Accueil.ComboBox1.Text
-        Jeu.ajout(nbCarrés, Panel1)
+        Nom_Lab.Text = Accueil.ComboBox1.Text 'On affiche le pseudo selon ce que l'on a rentré précédemment
+        Jeu.ajout(nbCarrés, Panel1) 'On ajoute les cartes au pannel
 
+        'Esthétisme
         Abandonner_btn.BackColor = Color.FromArgb(255, 99, 71)
         Abandonner_btn.ForeColor = Color.White
 
@@ -45,24 +51,25 @@ Public Class Memory
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         temps_restant -= 1
+        'Si le timer est inférieur à 10 on met le temps restant en rouge 
         If temps_restant <= 10 Then
             Timer.ForeColor = Color.Red
         End If
-        If temps_restant = 0 Or Jeu.score = nCarré Then
+        If temps_restant = 0 Or Jeu.score = nCarré Then 'Le jeu est considéré comme fini si le timer atteint 0 ou que le score max est atteint
             Timer1.Stop()
             RemoveHandler Timer1.Tick, AddressOf Timer1_Tick
-            temps_écoulé = temps_initial - temps_restant
+            temps_écoulé = temps_initial - temps_restant 'On définit le temps passé sur la partie
             If Jeu.score <> nCarré AndAlso Settings.son Then
                 fail.Play()
             End If
             If Jeu.score = nCarré AndAlso Settings.son Then
                 succes.Play()
             End If
-            finPartie(Jeu.score, temps_écoulé)
+            finPartie(Jeu.score, temps_écoulé) 'On affiche les résultats de la partie
             Me.Close()
             Enregistrement.Ajout(temps_écoulé)
         End If
-        Timer.Text = temps_restant.ToString() + "s"
+        Timer.Text = temps_restant.ToString() + "s" 'On actualise à chaque tick le temps restant 
     End Sub
 
     Private Sub Abandonner_btn_Click(sender As Object, e As EventArgs) Handles Abandonner_btn.Click
@@ -76,7 +83,7 @@ Public Class Memory
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'A enlever
         temps_restant = 1
     End Sub
 
@@ -86,7 +93,7 @@ Public Class Memory
         End If
         If pause = False Then
             Panel1.Enabled = False
-            Timer1.Stop()
+            Timer1.Stop() 'On pause le timer quand on appuie sur pause
             pause = True
             If sombre Then
                 pause_pb.Image = My.Resources.play_blanc

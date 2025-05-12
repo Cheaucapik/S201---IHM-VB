@@ -9,21 +9,21 @@ Public Class Accueil
         If Settings.son Then
             clic.Play()
         End If
-        Dim Choix = MsgBox("Êtes-vous sûr de vouloir quitter l'application ?", vbYesNo + vbDefaultButton2)
+        Dim Choix = MsgBox("Êtes-vous sûr de vouloir quitter l'application ?", vbYesNo + vbDefaultButton2) 'affiche une msgBox pour confirmer que le joueur souhaite quitter l'application
         If Choix = vbYes Then
             If Settings.son Then
-                seeYou.PlaySync()
+                seeYou.PlaySync() 'met un son pour indiquer la sortie du joueur, si le son est activé
             End If
             End
         End If
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-        longueur = ComboBox1.Text.Length >= 3
+        longueur = ComboBox1.Text.Length >= 3 'si le pseudo doit faire au moins 3 caractères
         If ComboBox1.Text <> "" Then
-            pseudo_lb.Visible = False
+            pseudo_lb.Visible = False 'si la combobox a au moins un caractère le label disparaît
         Else
-            pseudo_lb.Visible = True
+            pseudo_lb.Visible = True 'ajoute un label pour indiquer que la combobox doit contenir un pseudo
         End If
     End Sub
 
@@ -32,10 +32,10 @@ Public Class Accueil
             If Settings.son Then
                 jouer.Play()
             End If
-            Dim Jeu As New Memory()
+            Dim Jeu As New Memory() 'lance le jeu si la condition est respectée
             Jeu.Show()
         Else
-            MsgBox("Le pseudo doit contenir au moins 3 caractères.")
+            MsgBox("Le pseudo doit contenir au moins 3 caractères.") 'Si le pseudo fait moins de 3 caractères une Msg Box s'affiche
         End If
     End Sub
 
@@ -70,9 +70,9 @@ Public Class Accueil
     End Sub
 
     Private Sub Param_lb_MouseEnter(sender As Object, e As EventArgs) Handles Param_pb.MouseEnter, Quitter_btn.MouseEnter, Jouer_btn.MouseEnter, Score_btn.MouseEnter
-        sender.cursor = Cursors.Hand
+        sender.cursor = Cursors.Hand 'Si l'on rentre dans des zones cliquables, on change le curseur par défaut en main pour indiquer que c'est cliquable
     End Sub
     Private Sub ComboBox1_MouseEnter(sender As Object, e As EventArgs) Handles pseudo_lb.MouseEnter
-        sender.cursor = Cursors.IBeam
+        sender.cursor = Cursors.IBeam 'On change le curseur pour l'esthétisme et indiquer que c'est une box dans laquelle on peut écrire
     End Sub
 End Class
