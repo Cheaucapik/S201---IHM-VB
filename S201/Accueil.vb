@@ -5,6 +5,16 @@ Public Class Accueil
     Dim seeYou As New SoundPlayer(My.Resources.see_you)
     Dim longueur As Boolean
     Dim jouer As New SoundPlayer(My.Resources.done)
+    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Param_pb.BackgroundImage = My.Resources.settings
+
+        Jouer_btn.BackColor = Color.FromArgb(51, 154, 255)
+        Jouer_btn.ForeColor = Color.White
+
+        Quitter_btn.BackColor = Color.FromArgb(255, 99, 71)
+        Quitter_btn.ForeColor = Color.White
+        chargerFichier()
+    End Sub
     Private Sub Quitter_btn_Click(sender As Object, e As EventArgs) Handles Quitter_btn.Click
         If Settings.son Then
             clic.Play()
@@ -47,16 +57,6 @@ Public Class Accueil
         Score.Show()
     End Sub
 
-    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Param_pb.BackgroundImage = My.Resources.settings
-
-        Jouer_btn.BackColor = Color.FromArgb(51, 154, 255)
-        Jouer_btn.ForeColor = Color.White
-
-        Quitter_btn.BackColor = Color.FromArgb(255, 99, 71)
-        Quitter_btn.ForeColor = Color.White
-    End Sub
-
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Param_pb.Click
         If Settings.son Then
             clic.Play()
@@ -74,5 +74,9 @@ Public Class Accueil
     End Sub
     Private Sub ComboBox1_MouseEnter(sender As Object, e As EventArgs) Handles pseudo_lb.MouseEnter
         sender.cursor = Cursors.IBeam 'On change le curseur pour l'esthétisme et indiquer que c'est une box dans laquelle on peut écrire
+    End Sub
+
+    Private Sub Accueil_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        fichier()
     End Sub
 End Class

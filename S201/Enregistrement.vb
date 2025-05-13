@@ -1,4 +1,5 @@
-﻿Imports System.Media
+﻿Imports System.IO
+Imports System.Media
 
 Module Enregistrement
     Dim nom As String
@@ -10,7 +11,7 @@ Module Enregistrement
 
     Public listNom As New List(Of String)
     Public Structure Joueur
-        Public Nom As String
+        <VBFixedString(30)> Public Nom As String
         Public Score As Integer
         Public RecordTemps As Integer
         Public NbPartie As Integer
@@ -56,6 +57,7 @@ Module Enregistrement
         Dim r As Integer = temps_écoulé
         Dim np As Integer = 1
         Dim t As Integer = temps_écoulé
+
         Dim i As Integer = Verification(n) 'On vérifie si le joueur existe déjà
 
         If (i >= 0) Then 'Si c'est positif c'est que le joueur existe déjà, il ne faut pas le rajouter, on modifie cependant ses statistiques, si nécessaire
@@ -79,18 +81,13 @@ Module Enregistrement
         ReDim Preserve TJOUEUR(TJOUEUR.Length) 'Si le joueur est nouveau on le rajoute dans le tableau TJOUEUR sans modifier les joueurs précédents et on rajoute +1 par rapport à la longueur du tableau
         TJOUEUR(TJOUEUR.Length - 1) = New Joueur(n, s, r, np, t) 'On ajoute le joueur selon des paramètres de défaut et son score
 
-        listNom.Clear() 'On clear la listNom pour que la list soit cohérente avec le TJOUEUR ce qui est important, si le TJOUEUR a changé d'ordre, il faut que l'index dans la première partie du sub soit identique au joueur de TJOUEUR, pour ne pas modifier la mauvaise personne
-
-        For j As Integer = 0 To TJOUEUR.Length - 1
-            listNom.Add(TJOUEUR(j).Nom)
-        Next
-
         Accueil.ComboBox1.Text = "" 'une fois la partie terminée on remet à 0 la comboBox de l'accueil, si un autre joueur veut jouer
         Accueil.ComboBox1.Items.Clear() 'On clear tous les items de comboBox pour éviter les doublons puis on les rajoute
+        listNom.Clear() 'On clear la listNom pour que la list soit cohérente avec le TJOUEUR ce qui est important, si le TJOUEUR a changé d'ordre, il faut que l'index dans la première partie du sub soit identique au joueur de TJOUEUR, pour ne pas modifier la mauvaise personne
         For j As Integer = 0 To TJOUEUR.Length - 1
             Accueil.ComboBox1.Items.Add(TJOUEUR(j).Nom)
+            listNom.Add(TJOUEUR(j).Nom)
         Next
-
     End Sub
     Function Verification(n As String)
         For Each nom In listNom 'On parcourt tous les noms de la listNom pour savoir s'il y a plusieurs fois la même personne
@@ -100,5 +97,60 @@ Module Enregistrement
         Next
         Return -1 'sinon on retourne -1
     End Function
+
+    Sub fichier()
+        If File.Exists("score.dat") Then
+            File.Delete("score.dat")
+        End If
+
+        Dim num As Integer = FreeFile()
+        FileOpen(num, "score.dat", OpenMode.Random, , , Len(New Joueur()))
+        For i As Integer = 0 To TJOUEUR.Length - 1
+            FilePut(num, TJOUEUR(i), i + 1)
+        Next
+
+        FileClose(num)
+    End Sub
+
+    Sub chargerFichier()
+        Dim num As Integer = FreeFile()
+
+        If File.Exists("score.dat") Then
+            FileOpen(num, "score.dat", OpenMode.Random, , , Len(New Joueur()))
+
+            Dim TJOUEUR2() As Joueur = {}
+            Dim i As Integer = 0
+            While Not EOF(num)
+                Dim joueurTemp As New Joueur
+                FileGet(num, joueurTemp)
+                ReDim Preserve TJOUEUR2(i)
+                TJOUEUR2(i) = joueurTemp
+                i += 1
+            End While
+
+            TJOUEUR = TJOUEUR2
+            FileClose(num)
+
+            ' Remise à jour de listNom
+            listNom.Clear()
+            For j As Integer = 0 To TJOUEUR.Length - 1
+                listNom.Add(TJOUEUR(j).Nom)
+            Next
+
+            ' Met à jour la ComboBox1 proprement (évite doublons)
+            Accueil.ComboBox1.Items.Clear()
+            For Each nom In listNom
+                Accueil.ComboBox1.Items.Add(nom)
+            Next
+
+            ' Si la fenêtre Score est visible, on l’actualise
+            If Application.OpenForms().OfType(Of Score).Any() Then
+                afficher(Application.OpenForms().OfType(Of Score).First())
+            End If
+        End If
+    End Sub
+
+
+
 
 End Module
