@@ -49,8 +49,9 @@ Public Class Score
     End Sub
 
     Private Sub Nom_lb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Nom_lb.SelectedIndexChanged, Temps_lb.SelectedIndexChanged, BestScore_lb.SelectedIndexChanged, TempsCumul_lb.SelectedIndexChanged, NbPartie_lb.SelectedIndexChanged
-        Dim position As Integer = Nom_lb.SelectedIndex 'défini l'index de nom comme l'index de toutes les listBox
+        Dim position As Integer = sender.SelectedIndex 'défini l'index du sender comme l'index de toutes les listBox
         If position >= 0 Then 'il faut que position soit supérieur ou égal à 0 pour éviter toutes les erreurs d'indexiation
+            Nom_lb.SelectedIndex = position
             BestScore_lb.SelectedIndex = position
             TempsCumul_lb.SelectedIndex = position
             NbPartie_lb.SelectedIndex = position
@@ -143,13 +144,13 @@ Public Class Score
         sender.cursor = Cursors.Hand
     End Sub
 
-    Private Sub Nom_lb_MouseMove(sender As Object, e As MouseEventArgs) Handles Nom_lb.MouseMove
-        Dim index As Integer = Nom_lb.IndexFromPoint(e.Location)
+    Private Sub Nom_lb_MouseMove(sender As Object, e As MouseEventArgs) Handles Nom_lb.MouseMove, TempsCumul_lb.MouseMove, Temps_lb.MouseMove, BestScore_lb.MouseMove, NbPartie_lb.MouseMove
+        Dim index As Integer = sender.IndexFromPoint(e.Location)
 
         If index >= 0 Then
-            Nom_lb.Cursor = Cursors.Hand
+            sender.Cursor = Cursors.Hand
         Else
-            Nom_lb.Cursor = Cursors.Default
+            sender.Cursor = Cursors.Default
         End If
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
