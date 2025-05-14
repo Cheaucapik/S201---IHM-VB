@@ -38,7 +38,7 @@ Public Class Accueil
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-        longueur = ComboBox1.Text.Length >= 3 'si le pseudo doit faire au moins 3 caractères
+        longueur = ComboBox1.Text.Trim.Length >= 3 'si le pseudo doit faire au moins 3 caractères
         If ComboBox1.Text <> "" Then
             pseudo_lb.Visible = False 'si la combobox a au moins un caractère le label disparaît
         Else
