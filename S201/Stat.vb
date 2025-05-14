@@ -1,6 +1,6 @@
 ﻿Imports System.Media
 
-Public Class Score
+Public Class Stat
     Dim nom As String
     Dim score As Integer
     Dim record As Integer
@@ -13,7 +13,7 @@ Public Class Score
     Dim ordreTempsTotal As Boolean = False
     Dim clic As New SoundPlayer(My.Resources.click)
 
-    Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Stat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If sombre Then 'applique le thème sombre s'il est activé dans les paramètres
             Settings.themeSombre(Me)
         Else
@@ -24,7 +24,7 @@ Public Class Score
         ComboBox1.Text = "" 'Remet à vide la comboBox à chaque chargement du formulaire
         ComboBox1.Items.Clear() 'clear la comboBox pour éviter tout doublon
         For j As Integer = 0 To TJOUEUR.Length - 1 'Ajoute des items à la comboBox selon les joueurs enregistrés
-            ComboBox1.Items.Add(TJOUEUR(j).Nom)
+            ComboBox1.Items.Add(TJOUEUR(j).Nom.Trim) 'On ajoute dans la comboBox en enlevant les espaces
         Next
 
         'Esthétisme des boutons

@@ -8,8 +8,6 @@ Module Enregistrement
     Dim nbPartie As Integer
     Dim temps As Integer
     Dim clic As New SoundPlayer(My.Resources.click)
-
-    Public listNom As New List(Of String)
     Public Structure Joueur
         <VBFixedString(30)> Public Nom As String
         Public Score As Integer
@@ -28,7 +26,7 @@ Module Enregistrement
 
     Public TJOUEUR() As Joueur = {}
 
-    Sub afficher(f As Score)
+    Sub afficher(f As Stat)
         'On clear tout ce qui se trouve dans les listBox pour pas rajouter des éléments en trop, tout cela de manière à mettre les données selon l'odre demandé
         f.Nom_lb.Items.Clear()
         f.BestScore_lb.Items.Clear()
@@ -37,22 +35,22 @@ Module Enregistrement
         f.TempsCumul_lb.Items.Clear()
 
         'On ajoute les données à toutes les listBox pour chaque joueur 
-        For i As Integer = 0 To Enregistrement.listNom.Count - 1
-            nom = Enregistrement.TJOUEUR(i).Nom
+        For i As Integer = 0 To TJOUEUR.Length - 1
+            nom = TJOUEUR(i).Nom
             f.Nom_lb.Items.Add(nom)
-            score = Enregistrement.TJOUEUR(i).Score
+            score = TJOUEUR(i).Score
             f.BestScore_lb.Items.Add(score)
-            record = Enregistrement.TJOUEUR(i).RecordTemps
+            record = TJOUEUR(i).RecordTemps
             f.Temps_lb.Items.Add(record)
-            nbPartie = Enregistrement.TJOUEUR(i).NbPartie
+            nbPartie = TJOUEUR(i).NbPartie
             f.NbPartie_lb.Items.Add(nbPartie)
-            temps = Enregistrement.TJOUEUR(i).Temps
+            temps = TJOUEUR(i).Temps
             f.TempsCumul_lb.Items.Add(temps)
         Next
     End Sub
 
     Sub Ajout(temps_écoulé As Integer)
-        Dim n As String = Accueil.ComboBox1.Text
+        Dim n As String = Accueil.ComboBox1.Text.Trim()
         Dim s As Integer = Jeu.score
         Dim r As Integer = temps_écoulé
         Dim np As Integer = 1
@@ -83,30 +81,31 @@ Module Enregistrement
 
         Accueil.ComboBox1.Text = "" 'une fois la partie terminée on remet à 0 la comboBox de l'accueil, si un autre joueur veut jouer
         Accueil.ComboBox1.Items.Clear() 'On clear tous les items de comboBox pour éviter les doublons puis on les rajoute
-        listNom.Clear() 'On clear la listNom pour que la list soit cohérente avec le TJOUEUR ce qui est important, si le TJOUEUR a changé d'ordre, il faut que l'index dans la première partie du sub soit identique au joueur de TJOUEUR, pour ne pas modifier la mauvaise personne
         For j As Integer = 0 To TJOUEUR.Length - 1
             Accueil.ComboBox1.Items.Add(TJOUEUR(j).Nom)
-            listNom.Add(TJOUEUR(j).Nom)
         Next
     End Sub
-    Function Verification(n As String)
-        For Each nom In listNom 'On parcourt tous les noms de la listNom pour savoir s'il y a plusieurs fois la même personne
-            If n = nom.ToString() Then 'si le nom est identique, on retourne l'index du nom dans la list
-                Return listNom.IndexOf(nom)
+    Function Verification(n As String) As Integer 'On vérifie si le nom existe déjà
+        n = n.Trim() 'On enlève les espaces dûs à la mise dans un fichier
+        For i As Integer = 0 To TJOUEUR.Length - 1
+            If TJOUEUR(i).Nom.Trim() = n Then
+                Return i
             End If
         Next
-        Return -1 'sinon on retourne -1
+        Return -1
     End Function
 
+
+
     Sub fichier()
-        If File.Exists("score.dat") Then
+        If File.Exists("score.dat") Then 'Si le fichier existe on le supprime pour en créer un autre, avec les nouvelles statistiques
             File.Delete("score.dat")
         End If
 
         Dim num As Integer = FreeFile()
         FileOpen(num, "score.dat", OpenMode.Random, , , Len(New Joueur()))
         For i As Integer = 0 To TJOUEUR.Length - 1
-            FilePut(num, TJOUEUR(i), i + 1)
+            FilePut(num, TJOUEUR(i), i + 1) 'On met toutes les statistiques de TJOUEUR dans le fichier
         Next
 
         FileClose(num)
@@ -115,38 +114,32 @@ Module Enregistrement
     Sub chargerFichier()
         Dim num As Integer = FreeFile()
 
-        If File.Exists("score.dat") Then
+        If File.Exists("score.dat") Then 'Si le fichier existe on prend les données
             FileOpen(num, "score.dat", OpenMode.Random, , , Len(New Joueur()))
 
-            Dim TJOUEUR2() As Joueur = {}
+            Dim TJOUEUR2() As Joueur = {} 'On crée un nouveau tableau où on va mettre toutes les nouvelles données
             Dim i As Integer = 0
             While Not EOF(num)
-                Dim joueurTemp As New Joueur
+                Dim joueurTemp As New Joueur 'On passe par une variable temporaire
                 FileGet(num, joueurTemp)
-                ReDim Preserve TJOUEUR2(i)
+                ReDim Preserve TJOUEUR2(i) 'On ajoute au TJOUEUR2
                 TJOUEUR2(i) = joueurTemp
                 i += 1
             End While
 
-            TJOUEUR = TJOUEUR2
+            TJOUEUR = TJOUEUR2 'On affecte TJOUEUR avec les valeurs de TJOUEUR2, pour avoir les statistiques précédentes
             FileClose(num)
 
-            ' Remise à jour de listNom
-            listNom.Clear()
-            For j As Integer = 0 To TJOUEUR.Length - 1
-                listNom.Add(TJOUEUR(j).Nom)
-            Next
+            'On ajoute aux ComboBox les noms en enlevant les espaces
 
-            ' Met à jour la ComboBox1 proprement (évite doublons)
             Accueil.ComboBox1.Items.Clear()
-            For Each nom In listNom
-                Accueil.ComboBox1.Items.Add(nom)
+            Stat.ComboBox1.Items.Clear()
+
+            For Each joueur In TJOUEUR
+                Accueil.ComboBox1.Items.Add(joueur.Nom.Trim)
+                Stat.ComboBox1.Items.Add(joueur.Nom.Trim)
             Next
 
-            ' Si la fenêtre Score est visible, on l’actualise
-            If Application.OpenForms().OfType(Of Score).Any() Then
-                afficher(Application.OpenForms().OfType(Of Score).First())
-            End If
         End If
     End Sub
 

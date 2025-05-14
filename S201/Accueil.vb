@@ -24,6 +24,7 @@ Public Class Accueil
             If Settings.son Then
                 seeYou.PlaySync() 'met un son pour indiquer la sortie du joueur, si le son est activé
             End If
+            fichier()
             End
         End If
     End Sub
@@ -53,7 +54,7 @@ Public Class Accueil
         If Settings.son Then
             clic.Play()
         End If
-        Dim Score As New Score()
+        Dim Score As New Stat()
         Score.Show()
     End Sub
 
