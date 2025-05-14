@@ -14,14 +14,22 @@ Public Class Accueil
         Quitter_btn.BackColor = Color.FromArgb(255, 99, 71)
         Quitter_btn.ForeColor = Color.White
         chargerFichier()
+        chargerParametres()
+        If paramJeu.sombre Then 'applique le thème sombre s'il est activé dans les paramètres
+            Settings.themeSombre(Me)
+            Param_pb.Image = My.Resources.settings_blanc
+        Else
+            Settings.themeClair(Me)
+        End If
+
     End Sub
     Private Sub Quitter_btn_Click(sender As Object, e As EventArgs) Handles Quitter_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         Dim Choix = MsgBox("Êtes-vous sûr de vouloir quitter l'application ?", vbYesNo + vbDefaultButton2) 'affiche une msgBox pour confirmer que le joueur souhaite quitter l'application
         If Choix = vbYes Then
-            If Settings.son Then
+            If paramJeu.son Then
                 seeYou.PlaySync() 'met un son pour indiquer la sortie du joueur, si le son est activé
             End If
             fichier()
@@ -40,7 +48,7 @@ Public Class Accueil
 
     Private Sub Jouer_btn_Click(sender As Object, e As EventArgs) Handles Jouer_btn.Click
         If longueur = True Then
-            If Settings.son Then
+            If paramJeu.son Then
                 jouer.Play()
             End If
             Dim Jeu As New Memory() 'lance le jeu si la condition est respectée
@@ -51,7 +59,7 @@ Public Class Accueil
     End Sub
 
     Private Sub Score_btn_Click(sender As Object, e As EventArgs) Handles Score_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         Dim Score As New Stat()
@@ -59,7 +67,7 @@ Public Class Accueil
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles Param_pb.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         Dim Param As New Parametres()
@@ -79,5 +87,6 @@ Public Class Accueil
 
     Private Sub Accueil_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         fichier()
+        fichierSettings()
     End Sub
 End Class

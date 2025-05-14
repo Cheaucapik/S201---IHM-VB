@@ -5,7 +5,7 @@ Public Class Memory
     Dim nbCarrés As Integer
     Dim nCarré As Integer
     Dim temps_écoulé As Integer
-    Public temps_initial As Integer = Settings.temps
+    Public temps_initial As Integer = paramJeu.temps
     Public pause As Boolean = False
     Dim succes As New SoundPlayer(My.Resources.successful)
     Dim clic As New SoundPlayer(My.Resources.click)
@@ -13,11 +13,13 @@ Public Class Memory
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Button1.Visible = False 'bouton pour avancer la partie
+
         'définit le nb de carrés selon la difficulté
 
-        If Settings.difficulté = 2 Then
+        If paramJeu.difficulté = 2 Then
             nbCarrés = 20
-        ElseIf Settings.difficulté = 1 Then
+        ElseIf paramJeu.difficulté = 1 Then
             nbCarrés = 28
         Else
             nbCarrés = 12
@@ -40,7 +42,7 @@ Public Class Memory
         Abandonner_btn.BackColor = Color.FromArgb(255, 99, 71)
         Abandonner_btn.ForeColor = Color.White
 
-        If sombre Then
+        If paramJeu.sombre Then
             Settings.themeSombre(Me)
             pause_pb.Image = My.Resources.pause_blanc
         Else
@@ -59,10 +61,10 @@ Public Class Memory
             Timer1.Stop()
             RemoveHandler Timer1.Tick, AddressOf Timer1_Tick
             temps_écoulé = temps_initial - temps_restant 'On définit le temps passé sur la partie
-            If Jeu.score <> nCarré AndAlso Settings.son Then
+            If Jeu.score <> nCarré AndAlso paramJeu.son Then
                 fail.Play()
             End If
-            If Jeu.score = nCarré AndAlso Settings.son Then
+            If Jeu.score = nCarré AndAlso paramJeu.son Then
                 succes.Play()
             End If
             finPartie(Jeu.score, temps_écoulé) 'On affiche les résultats de la partie
@@ -73,7 +75,7 @@ Public Class Memory
     End Sub
 
     Private Sub Abandonner_btn_Click(sender As Object, e As EventArgs) Handles Abandonner_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         Dim choix = MsgBox("Êtes-vous sûr de vouloir arrêter le jeu ?", vbYesNo + vbDefaultButton2)
@@ -83,19 +85,19 @@ Public Class Memory
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'A enlever
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'Bouton avançant la partie
         temps_restant = 1
     End Sub
 
     Private Sub pause_pb_Click(sender As Object, e As EventArgs) Handles pause_pb.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         If pause = False Then
             Panel1.Enabled = False
             Timer1.Stop() 'On pause le timer quand on appuie sur pause
             pause = True
-            If sombre Then
+            If paramJeu.sombre Then
                 pause_pb.Image = My.Resources.play_blanc
             Else
                 pause_pb.Image = My.Resources.play
@@ -105,7 +107,7 @@ Public Class Memory
             pause = False
             Timer1.Start()
             Panel1.Enabled = True
-            If sombre Then
+            If paramJeu.sombre Then
                 pause_pb.Image = My.Resources.pause_blanc
             Else
                 pause_pb.Image = My.Resources.pause

@@ -8,7 +8,7 @@ Public Class Parametres
             Difficulté_GB.Controls(i).Text = difficulté(i) 'Affichage pour chaque radioButton
         Next i
 
-        If sombre Then
+        If paramJeu.sombre Then
             Settings.themeSombre(Me)
         Else
             Settings.themeClair(Me)
@@ -29,7 +29,7 @@ Public Class Parametres
     Private Sub save_btn_Click(sender As Object, e As EventArgs) Handles save_btn.Click 'On sauvegarde les paramètres
         Settings.sauvegarde(Me)
         'Le thème sombre est appliqué aux forms déjà ouverts
-        If Settings.sombre Then
+        If paramJeu.sombre Then
             For Each f In Application.OpenForms
                 Settings.themeSombre(f)
                 Accueil.Param_pb.Image = My.Resources.settings_blanc
@@ -63,7 +63,7 @@ Public Class Parametres
     End Sub
 
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.Click, RadioButton2.Click, RadioButton3.Click, CheckBox1.Click, CheckBox2.Click, Retour_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
     End Sub

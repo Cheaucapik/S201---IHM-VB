@@ -1,16 +1,50 @@
-﻿Imports System.Media
+﻿Imports System.IO
+Imports System.Media
 
 Module Settings
     Dim save As New SoundPlayer(My.Resources.done)
     Dim clic As New SoundPlayer(My.Resources.click)
 
-    Public difficulté As Integer = 2
-    Public temps As Integer = 60
-    Public son As Boolean = True
-    Public sombre As Boolean = False
+    Public Structure param
+        Public difficulté As Integer
+        Public temps As Integer
+        Public son As Boolean
+        Public sombre As Boolean
+    End Structure
 
-    Sub charge(f As Parametres) 'On définit les paramètres de défaut à la charge du formulaire ou ceux définis dans sauvegarde si le formulaire est rechargé
-        Select Case difficulté
+    Public paramJeu As param
+
+    Sub fichierSettings()
+        If File.Exists("settings.dat") Then 'Si le fichier existe on le supprime pour en créer un autre, avec les nouveaux paramètres
+            File.Delete("settings.dat")
+        End If
+
+        Dim num As Integer = FreeFile()
+        FileOpen(num, "settings.dat", OpenMode.Random, , , Len(paramJeu))
+        FilePut(num, paramJeu, 1)
+        FileClose(num)
+    End Sub
+
+    Sub chargerParametres()
+        If File.Exists("settings.dat") Then 'Charge les paramètres à chaque fois si le fichier existe sinon ca lance les paramètres de défaut
+            Dim num As Integer = FreeFile()
+            FileOpen(num, "settings.dat", OpenMode.Random, , , Len(paramJeu))
+            FileGet(num, paramJeu, 1)
+            FileClose(num)
+        Else
+            initialiserParametres()
+        End If
+    End Sub
+
+    Sub initialiserParametres()
+        paramJeu.temps = 60 'On initialise par des paramètres de défaut quand il n'y a pas de fichier
+        paramJeu.difficulté = 2
+        paramJeu.son = True
+        paramJeu.sombre = False
+    End Sub
+
+    Sub charge(f As Parametres) 'Charge les paramètres avec les données dans la struct, pour l'affichade du form paramètres
+        Select Case paramJeu.difficulté
             Case 1
                 f.RadioButton1.Checked = True
             Case 2
@@ -19,50 +53,52 @@ Module Settings
                 f.RadioButton3.Checked = True
         End Select
 
-        f.Temps_tb.Text = temps.ToString()
+        f.Temps_tb.Text = paramJeu.temps.ToString()
 
-        f.CheckBox1.Checked = sombre
+        f.CheckBox1.Checked = paramJeu.sombre
 
-        f.CheckBox2.Checked = son
+        f.CheckBox2.Checked = paramJeu.son
     End Sub
 
-    Sub sauvegarde(f As Parametres)
-        If Settings.son Then
+
+    Sub sauvegarde(f As Parametres) 'On sauvegarde les paramètres quand on appuie sur le bouton
+        If paramJeu.son Then
             save.Play()
         End If
 
         Select Case True 'On attribue une difficulté selon le radioButton coché
             Case f.RadioButton1.Checked
-                difficulté = 1
+                paramJeu.difficulté = 1
             Case f.RadioButton2.Checked
-                difficulté = 2
+                paramJeu.difficulté = 2
             Case Else
-                difficulté = 3
+                paramJeu.difficulté = 3
         End Select
 
         If CInt(f.Temps_tb.Text) >= 30 Then
-            temps = CInt(f.Temps_tb.Text) 'On définit un temps supérieur au moins à 30 secondes pour éviter des temps de partie trop minimals
+            paramJeu.temps = CInt(f.Temps_tb.Text) 'On définit un temps supérieur au moins à 30 secondes pour éviter des temps de partie trop minimals
         Else
             MsgBox("Veuillez saisir un temps supérieur à 30 secondes.")
             Exit Sub
         End If
 
         If f.CheckBox1.Checked Then 'Application du thème sombre ou non
-            sombre = True
+            paramJeu.sombre = True
         Else
-            sombre = False
+            paramJeu.sombre = False
         End If
 
         If f.CheckBox2.Checked Then 'Sons on ou off
-            son = True
+            paramJeu.son = True
         Else
-            son = False
+            paramJeu.son = False
         End If
 
         MsgBox("Paramètres enregistrés.")
 
     End Sub
 
+    'Thèmes de couleur
     Sub themeSombre(f As Form)
         f.BackColor = Color.FromArgb(44, 47, 51)
 

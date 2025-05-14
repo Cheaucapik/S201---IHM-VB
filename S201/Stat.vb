@@ -14,7 +14,7 @@ Public Class Stat
     Dim clic As New SoundPlayer(My.Resources.click)
 
     Private Sub Stat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If sombre Then 'applique le thème sombre s'il est activé dans les paramètres
+        If paramJeu.sombre Then 'applique le thème sombre s'il est activé dans les paramètres
             Settings.themeSombre(Me)
         Else
             Settings.themeClair(Me)
@@ -64,7 +64,7 @@ Public Class Stat
     'Dans les prochains sub, on trie dans l'ordre croissant ou décroissant selon le bouton
 
     Private Sub OrderScore_btn_Click(sender As Object, e As EventArgs) Handles OrderScore_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         If ordreScore = True Then
@@ -78,7 +78,7 @@ Public Class Stat
     End Sub
 
     Private Sub OrderTemps_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsRecord_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         If ordreTempsRecord = True Then
@@ -92,7 +92,7 @@ Public Class Stat
     End Sub
 
     Private Sub OrderNom_btn_Click(sender As Object, e As EventArgs) Handles OrderNom_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         If ordreNom = True Then
@@ -106,7 +106,7 @@ Public Class Stat
     End Sub
 
     Private Sub OrderNbPartie_btn_Click(sender As Object, e As EventArgs) Handles OrderNbPartie_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         If ordrePartie = True Then
@@ -120,7 +120,7 @@ Public Class Stat
     End Sub
 
     Private Sub OrdreTempsTotal_btn_Click(sender As Object, e As EventArgs) Handles OrderTempsTotal_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         If ordreTempsTotal = True Then
@@ -134,7 +134,7 @@ Public Class Stat
     End Sub
 
     Private Sub Retour_btn_Click(sender As Object, e As EventArgs) Handles Retour_btn.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         Me.Close()
@@ -154,7 +154,7 @@ Public Class Stat
         End If
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If Settings.son Then
+        If paramJeu.son Then
             clic.Play()
         End If
         Dim index As Integer = ComboBox1.SelectedIndex 'Si on clique sur le bouton valider toutes les statistiques du joueurs correspondant sont affichées
