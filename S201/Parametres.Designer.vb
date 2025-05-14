@@ -33,6 +33,7 @@ Partial Class Parametres
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.save_btn = New System.Windows.Forms.Button()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.Difficulté_GB.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,7 +45,7 @@ Partial Class Parametres
         Me.Difficulté_GB.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Difficulté_GB.Location = New System.Drawing.Point(12, 69)
         Me.Difficulté_GB.Name = "Difficulté_GB"
-        Me.Difficulté_GB.Size = New System.Drawing.Size(158, 124)
+        Me.Difficulté_GB.Size = New System.Drawing.Size(158, 135)
         Me.Difficulté_GB.TabIndex = 0
         Me.Difficulté_GB.TabStop = False
         Me.Difficulté_GB.Text = "Difficulté"
@@ -53,7 +54,7 @@ Partial Class Parametres
         '
         Me.RadioButton3.AutoSize = True
         Me.RadioButton3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton3.Location = New System.Drawing.Point(15, 92)
+        Me.RadioButton3.Location = New System.Drawing.Point(15, 102)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(97, 17)
         Me.RadioButton3.TabIndex = 2
@@ -65,7 +66,7 @@ Partial Class Parametres
         '
         Me.RadioButton2.AutoSize = True
         Me.RadioButton2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton2.Location = New System.Drawing.Point(15, 60)
+        Me.RadioButton2.Location = New System.Drawing.Point(15, 61)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(97, 17)
         Me.RadioButton2.TabIndex = 1
@@ -77,7 +78,7 @@ Partial Class Parametres
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(14, 25)
+        Me.RadioButton1.Location = New System.Drawing.Point(15, 21)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(97, 17)
         Me.RadioButton1.TabIndex = 0
@@ -99,7 +100,7 @@ Partial Class Parametres
         '
         Me.Temps_lb.AutoSize = True
         Me.Temps_lb.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Temps_lb.Location = New System.Drawing.Point(247, 171)
+        Me.Temps_lb.Location = New System.Drawing.Point(247, 188)
         Me.Temps_lb.Name = "Temps_lb"
         Me.Temps_lb.Size = New System.Drawing.Size(49, 13)
         Me.Temps_lb.TabIndex = 7
@@ -108,7 +109,7 @@ Partial Class Parametres
         'Temps_tb
         '
         Me.Temps_tb.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Temps_tb.Location = New System.Drawing.Point(334, 168)
+        Me.Temps_tb.Location = New System.Drawing.Point(334, 182)
         Me.Temps_tb.Name = "Temps_tb"
         Me.Temps_tb.Size = New System.Drawing.Size(29, 22)
         Me.Temps_tb.TabIndex = 8
@@ -127,7 +128,7 @@ Partial Class Parametres
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(250, 94)
+        Me.CheckBox1.Location = New System.Drawing.Point(250, 90)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(97, 17)
         Me.CheckBox1.TabIndex = 25
@@ -137,7 +138,7 @@ Partial Class Parametres
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(250, 130)
+        Me.CheckBox2.Location = New System.Drawing.Point(250, 121)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(46, 17)
         Me.CheckBox2.TabIndex = 26
@@ -155,11 +156,22 @@ Partial Class Parametres
         Me.save_btn.Text = "Sauvegarder"
         Me.save_btn.UseVisualStyleBackColor = True
         '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(250, 154)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(56, 17)
+        Me.CheckBox3.TabIndex = 28
+        Me.CheckBox3.Text = "Pause"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
         'Parametres
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(389, 273)
+        Me.Controls.Add(Me.CheckBox3)
         Me.Controls.Add(Me.save_btn)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
@@ -190,4 +202,5 @@ Partial Class Parametres
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents save_btn As Button
+    Friend WithEvents CheckBox3 As CheckBox
 End Class

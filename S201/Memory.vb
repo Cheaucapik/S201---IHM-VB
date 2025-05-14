@@ -17,6 +17,12 @@ Public Class Memory
 
         'définit le nb de carrés selon la difficulté
 
+        If paramJeu.pause = False Then
+            pause_pb.Visible = False
+        Else
+            pause_pb.Visible = True
+        End If
+
         If paramJeu.difficulté = 2 Then
             nbCarrés = 20
         ElseIf paramJeu.difficulté = 1 Then

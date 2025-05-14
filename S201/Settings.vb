@@ -10,6 +10,7 @@ Module Settings
         Public temps As Integer
         Public son As Boolean
         Public sombre As Boolean
+        Public pause As Boolean
     End Structure
 
     Public paramJeu As param
@@ -41,6 +42,7 @@ Module Settings
         paramJeu.difficulté = 2
         paramJeu.son = True
         paramJeu.sombre = False
+        paramJeu.pause = False
     End Sub
 
     Sub charge(f As Parametres) 'Charge les paramètres avec les données dans la struct, pour l'affichade du form paramètres
@@ -58,6 +60,8 @@ Module Settings
         f.CheckBox1.Checked = paramJeu.sombre
 
         f.CheckBox2.Checked = paramJeu.son
+
+        f.CheckBox3.Checked = paramJeu.pause
     End Sub
 
 
@@ -92,6 +96,12 @@ Module Settings
             paramJeu.son = True
         Else
             paramJeu.son = False
+        End If
+
+        If f.CheckBox3.Checked Then
+            paramJeu.pause = True
+        Else
+            paramJeu.pause = False
         End If
 
         MsgBox("Paramètres enregistrés.")
