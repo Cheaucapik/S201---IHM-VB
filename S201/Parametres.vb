@@ -25,7 +25,6 @@ Public Class Parametres
     Private Sub RadioButton1_MouseEnter(sender As Object, e As EventArgs) Handles RadioButton1.MouseEnter, RadioButton2.MouseEnter, RadioButton3.MouseEnter, CheckBox1.MouseEnter, CheckBox2.MouseEnter, Retour_btn.MouseEnter
         sender.cursor = Cursors.Hand
     End Sub
-
     Private Sub save_btn_Click(sender As Object, e As EventArgs) Handles save_btn.Click 'On sauvegarde les paramètres
         Settings.sauvegarde(Me)
         'Le thème sombre est appliqué aux forms déjà ouverts
