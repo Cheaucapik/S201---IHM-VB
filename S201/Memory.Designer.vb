@@ -132,7 +132,9 @@ Partial Class Memory
         Me.Controls.Add(Me.Joueur_lab)
         Me.Controls.Add(Me.Abandonner_btn)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Memory"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Jeu"
         CType(Me.pause_pb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

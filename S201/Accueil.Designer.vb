@@ -117,7 +117,9 @@ Partial Class Accueil
         Me.Controls.Add(Me.Jouer_btn)
         Me.Controls.Add(Me.ComboBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Accueil"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Accueil"
         CType(Me.Param_pb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

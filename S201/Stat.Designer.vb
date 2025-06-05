@@ -189,7 +189,7 @@ Partial Class Stat
         Me.Button1.Text = "✔️"
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'Score
+        'Stat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -209,7 +209,9 @@ Partial Class Stat
         Me.Controls.Add(Me.BestScore_lb)
         Me.Controls.Add(Me.Nom_lb)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Name = "Score"
+        Me.MinimizeBox = False
+        Me.Name = "Stat"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tableau des scores"
         Me.ResumeLayout(False)
         Me.PerformLayout()

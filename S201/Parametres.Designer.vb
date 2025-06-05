@@ -182,7 +182,9 @@ Partial Class Parametres
         Me.Controls.Add(Me.Difficulté_GB)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MinimizeBox = False
         Me.Name = "Parametres"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Paramètres"
         Me.Difficulté_GB.ResumeLayout(False)
         Me.Difficulté_GB.PerformLayout()
